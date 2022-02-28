@@ -5,11 +5,11 @@ int var[26];
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token tFL tEGAL tPO tPF tSOU tADD tDIV tMUL tERROR
+%token gtIF tELSE tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN tEGAL tSOU tADD tMUL tDIV tPO tPF tAO tAF tPV tVIR tFL tERROR
 %token <nb> tNB
 %token <var> tID
 %type <nb> Expr DivMul Terme
-%start Calculatrice
+%start Compiler
 %%
 Calculatrice :	  Calcul Calculatrice | Calcul ;
 Calcul :	  Expr tFL { printf("> %d\n", $1); }
@@ -26,7 +26,7 @@ Terme :		  tPO Expr tPF { $$ = $2; }
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
 int main(void) {
-  printf("Calculatrice\n"); // yydebug=1;
+  printf("Compiler\n"); // yydebug=1;
   yyparse();
   return 0;
 }
