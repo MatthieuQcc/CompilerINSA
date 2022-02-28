@@ -14,6 +14,9 @@
 	  yylval.nb = atoi(yytext);
 	  return tNB;
 	}
+"if" { return tIF }
+"else" {return tELSE }
+"for" { return tFOR }
 "="	{ return tEGAL; }
 "-"	{ return tSOU; }
 "+"	{ return tADD; }
