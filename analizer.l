@@ -8,6 +8,7 @@
 
 %%
 
+
 [ \t]+	{};
 [0-9]+	{
 	  yylval.nb = atoi(yytext);
