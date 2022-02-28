@@ -9,14 +9,20 @@
 %%
 
 
-[ \t]+	{};
-[0-9]+	{
-	  yylval.nb = atoi(yytext);
-	  return tNB;
-	}
-"if" { return tIF }
-"else" {return tELSE }
-"for" { return tFOR }
+
+[ \n\t]+ {};
+[0-9]+	{ return tNB; }
+
+if { return tIF; }
+else {return tELSE; }
+while { return tWHILE; }
+main { return tMAIN; }
+void { return tVOID; }
+const { return tCONST; }
+int { return tINT; }
+printf { return tPRINTF; }
+return { return tRETURN; }
+
 "="	{ return tEGAL; }
 "-"	{ return tSOU; }
 "+"	{ return tADD; }
@@ -24,9 +30,12 @@
 "/"	{ return tDIV; }
 "("	{ return tPO; }
 ")"	{ return tPF; }
-[a-z]	{
-	  yylval.var = yytext[0];
-	  return tID;
-	}
+"{" { return tAO; }
+"}" { return tAF; }
+";" { return tPV; }
+"," { return tVIR; }
+
+[a-z]+	{ return tID; }
+
 \n	{ return tFL; }
 .	{ return tERROR; }
