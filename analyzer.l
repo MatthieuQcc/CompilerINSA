@@ -22,6 +22,7 @@ const { return tCONST; }
 int { return tINT; }
 printf { return tPRINTF; }
 return { return tRETURN; }
+void { return tVOID; }
 
 "="	{ return tEGAL; }
 "-"	{ return tSOU; }

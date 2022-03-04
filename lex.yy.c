@@ -352,8 +352,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 26
-#define YY_END_OF_BUFFER 27
+#define YY_NUM_RULES 27
+#define YY_END_OF_BUFFER 28
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -363,12 +363,12 @@ struct yy_trans_info
 	};
 static const flex_int16_t yy_accept[62] =
     {   0,
-        0,    0,   27,   25,    1,    1,   17,   18,   15,   14,
-       22,   13,   16,    2,   21,   12,   23,   23,   23,   23,
-       23,   23,   23,   23,   23,   19,   20,    1,    2,   23,
-       23,   23,    3,   23,   23,   23,   23,   23,   23,   23,
-       23,    9,   23,   23,   23,   23,   23,   23,    4,    6,
-       23,   23,    7,   23,    8,   23,   23,    5,   10,   11,
+        0,    0,   28,   26,    1,    1,   18,   19,   16,   15,
+       23,   14,   17,    2,   22,   13,   24,   24,   24,   24,
+       24,   24,   24,   24,   24,   20,   21,    1,    2,   24,
+       24,   24,    3,   24,   24,   24,   24,   24,   24,   24,
+       24,    9,   24,   24,   24,   24,   24,   24,    4,    6,
+       24,   24,    7,   24,    8,   24,   24,    5,   10,   11,
         0
     } ;
 
@@ -823,81 +823,86 @@ YY_RULE_SETUP
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 26 "analyzer.l"
-{ return tEGAL; }
+#line 25 "analyzer.l"
+{ return tVOID; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
 #line 27 "analyzer.l"
-{ return tSOU; }
+{ return tEGAL; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
 #line 28 "analyzer.l"
-{ return tADD; }
+{ return tSOU; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
 #line 29 "analyzer.l"
-{ return tMUL; }
+{ return tADD; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
 #line 30 "analyzer.l"
-{ return tDIV; }
+{ return tMUL; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
 #line 31 "analyzer.l"
-{ return tPO; }
+{ return tDIV; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
 #line 32 "analyzer.l"
-{ return tPF; }
+{ return tPO; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
 #line 33 "analyzer.l"
-{ return tAO; }
+{ return tPF; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
 #line 34 "analyzer.l"
-{ return tAF; }
+{ return tAO; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
 #line 35 "analyzer.l"
-{ return tPV; }
+{ return tAF; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
 #line 36 "analyzer.l"
-{ return tVIR; }
+{ return tPV; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 38 "analyzer.l"
-{ return tID; }
+#line 37 "analyzer.l"
+{ return tVIR; }
 	YY_BREAK
 case 24:
-/* rule 24 can match eol */
 YY_RULE_SETUP
-#line 40 "analyzer.l"
-{ return tFL; }
+#line 39 "analyzer.l"
+{ return tID; }
 	YY_BREAK
 case 25:
+/* rule 25 can match eol */
 YY_RULE_SETUP
 #line 41 "analyzer.l"
-{ return tERROR; }
+{ return tFL; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
 #line 42 "analyzer.l"
+{ return tERROR; }
+	YY_BREAK
+case 27:
+YY_RULE_SETUP
+#line 43 "analyzer.l"
 ECHO;
 	YY_BREAK
-#line 901 "lex.yy.c"
+#line 906 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1902,4 +1907,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 42 "analyzer.l"
+#line 43 "analyzer.l"

@@ -59,21 +59,22 @@ extern int yydebug;
     tINT = 265,
     tPRINTF = 266,
     tRETURN = 267,
-    tEGAL = 268,
-    tSOU = 269,
-    tADD = 270,
-    tMUL = 271,
-    tDIV = 272,
-    tPO = 273,
-    tPF = 274,
-    tAO = 275,
-    tAF = 276,
-    tPV = 277,
-    tVIR = 278,
-    tFL = 279,
-    tERROR = 280,
-    tNB = 281,
-    tID = 282
+    TVOID = 268,
+    tEGAL = 269,
+    tSOU = 270,
+    tADD = 271,
+    tMUL = 272,
+    tDIV = 273,
+    tPO = 274,
+    tPF = 275,
+    tAO = 276,
+    tAF = 277,
+    tPV = 278,
+    tVIR = 279,
+    tFL = 280,
+    tERROR = 281,
+    tNB = 282,
+    tID = 283
   };
 #endif
 /* Tokens.  */
@@ -87,21 +88,22 @@ extern int yydebug;
 #define tINT 265
 #define tPRINTF 266
 #define tRETURN 267
-#define tEGAL 268
-#define tSOU 269
-#define tADD 270
-#define tMUL 271
-#define tDIV 272
-#define tPO 273
-#define tPF 274
-#define tAO 275
-#define tAF 276
-#define tPV 277
-#define tVIR 278
-#define tFL 279
-#define tERROR 280
-#define tNB 281
-#define tID 282
+#define TVOID 268
+#define tEGAL 269
+#define tSOU 270
+#define tADD 271
+#define tMUL 272
+#define tDIV 273
+#define tPO 274
+#define tPF 275
+#define tAO 276
+#define tAF 277
+#define tPV 278
+#define tVIR 279
+#define tFL 280
+#define tERROR 281
+#define tNB 282
+#define tID 283
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -110,7 +112,7 @@ union YYSTYPE
 #line 8 "analyzer.y"
  int nb; char var; 
 
-#line 114 "y.tab.h"
+#line 116 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
