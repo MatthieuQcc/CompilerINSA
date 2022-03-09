@@ -15,6 +15,7 @@
 
 if { return tIF; }
 else {return tELSE; }
+elsif { return tELSIF; }
 while { return tWHILE; }
 main { return tMAIN; }
 void { return tVOID; }

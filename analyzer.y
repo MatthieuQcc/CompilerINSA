@@ -6,17 +6,18 @@ int yylex();
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token gtIF tIF tELSE tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tPO tPF tAO tAF tPV tVIR tFL tERROR
+%token gtIF tIF tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tPO tPF tAO tAF tPV tVIR tFL tERROR
 %token <nb> tNB
 %token <var> tID
-%type <nb> tExpr tDivMul tTerme tAffect tDecla tCond tCondIf tBoucleWhile tType
+%type <nb> tExpr tDivMul tTerme tAffect tDecla Cond tType
 %start Compiler
 %%
-Compiler : tType tMAIN tPO tPF tAO BODY tAF
-		| tType tMAIN tPO tType tPF tAO BODY tAF
-BODY : Instructions  { printf("Instruction\n"); }
+Compiler : tType tMAIN tPO tPF tAO Body tAF
+		| tType tMAIN tPO tType tPF tAO Body tAF
+Body : Instructions tRETURN tINT { printf("Body of the function\n"); }
+		|Instructions { printf("Body of the function\n"); }
 
-Instructions : Instruction 
+Instructions : Instruction
 		| Instruction Instructions
 Instruction : Declaration 
 		| Calcul
@@ -30,9 +31,17 @@ Declaration :  tType tID tEGAL tNB tPV { printf("Declaration\n"); }
 
 Affectation : tID tEGAL tNB tPV { printf("Affectation\n"); }
 
-BoucleWhile :  tWHILE tPO tCond tPF tAO Instruction tAF { printf("Boucle While\n"); }
+BoucleWhile :  tWHILE tPO Cond tPF tAO Instructions tAF { printf("Boucle While\n"); }
 
-BoucleIf : tIF tPO tCond tPF tAO Instruction tAF { printf("Boucle if\n"); }
+BoucleIf : tIF tPO Cond tPF tAO Instructions tAF { printf("Boucle if\n"); }
+		| tIF tPO Cond tPF tAO Instructions tAF ElsIfs { printf("Boucle if\n"); }
+		| tIF tPO tCond tPF tAO Instructions tAF Else { printf("Boucle if\n"); }
+
+Else : tELSE tAO Instructions tAF 
+
+Elseifs : Elsif Elsifs 
+
+ElsIf : tELSIF tPO Cond tPF tAO Instructions tAF
 
 tType : tINT
 		| tVOID
@@ -52,11 +61,9 @@ tTerme :		  tPO tExpr tPF { $$ = $2; }
 		| tID { $$ = var[$1]; }
 		| tNB { $$ = $1; } ;
 
-tCond : tPO tID tEGAL tID tPF 
+Cond : tPO tID tEGAL tID tPF 
 
-tCondIf : tIF tCond tAO 
-
-tAffect : 	tExpr tEGAL tID {$$ = $3}
+Affect : 	tExpr tEGAL tID {$$ = $3}
 
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
