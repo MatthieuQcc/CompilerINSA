@@ -39,9 +39,11 @@ BoucleIf : tIF tPO Cond tPF tAO Instructions tAF { printf("Boucle if\n"); }
 
 Else : tELSE tAO Instructions tAF 
 
-Elseifs : ElsIf Elseifs 
+Elseifs : ElsIf 
+		| ElsIf Elseifs 
 
 ElsIf : tELSIF tPO Cond tPF tAO Instructions tAF
+
 
 tType : tINT
 		| tVOID
