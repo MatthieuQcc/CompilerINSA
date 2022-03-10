@@ -6,7 +6,7 @@ int yylex();
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token gtIF tIF tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tPO tPF tAO tAF tPV tVIR tFL tERROR
+%token tIF tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
 %token <nb> tNB
 %token <var> tID
 %type <nb> tExpr tDivMul tTerme tAffect tDecla Cond tType
@@ -34,12 +34,12 @@ Affectation : tID tEGAL tNB tPV { printf("Affectation\n"); }
 BoucleWhile :  tWHILE tPO Cond tPF tAO Instructions tAF { printf("Boucle While\n"); }
 
 BoucleIf : tIF tPO Cond tPF tAO Instructions tAF { printf("Boucle if\n"); }
-		| tIF tPO Cond tPF tAO Instructions tAF ElsIfs { printf("Boucle if\n"); }
-		| tIF tPO tCond tPF tAO Instructions tAF Else { printf("Boucle if\n"); }
+		| tIF tPO Cond tPF tAO Instructions tAF Elseifs { printf("Boucle if\n"); }
+		| tIF tPO Cond tPF tAO Instructions tAF Else { printf("Boucle if\n"); }
 
 Else : tELSE tAO Instructions tAF 
 
-Elseifs : Elsif Elsifs 
+Elseifs : ElsIf Elseifs 
 
 ElsIf : tELSIF tPO Cond tPF tAO Instructions tAF
 
@@ -61,9 +61,12 @@ tTerme :		  tPO tExpr tPF { $$ = $2; }
 		| tID { $$ = var[$1]; }
 		| tNB { $$ = $1; } ;
 
-Cond : tPO tID tEGAL tID tPF 
+Cond : tID tEGAL tEGAL tID 
+		| tID tINF tID
+		| tID tSUP tID
+		| tNB tEGAL tEGAL tNB
 
-Affect : 	tExpr tEGAL tID {$$ = $3}
+tAffect : 	tExpr tEGAL tID {$$ = $3}
 
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }

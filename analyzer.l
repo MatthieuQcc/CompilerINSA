@@ -36,6 +36,8 @@ void { return tVOID; }
 "}" { return tAF; }
 ";" { return tPV; }
 "," { return tVIR; }
+"<" { return tINF; }
+">" { return tSUP; }
 
 [a-z]+	{ return tID; }
 

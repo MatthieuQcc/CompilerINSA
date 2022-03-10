@@ -49,9 +49,9 @@ extern int yydebug;
 # define YYTOKENTYPE
   enum yytokentype
   {
-    gtIF = 258,
-    tIF = 259,
-    tELSE = 260,
+    tIF = 258,
+    tELSE = 259,
+    tELSIF = 260,
     tWHILE = 261,
     tMAIN = 262,
     tVOID = 263,
@@ -65,22 +65,24 @@ extern int yydebug;
     tADD = 271,
     tMUL = 272,
     tDIV = 273,
-    tPO = 274,
-    tPF = 275,
-    tAO = 276,
-    tAF = 277,
-    tPV = 278,
-    tVIR = 279,
-    tFL = 280,
-    tERROR = 281,
-    tNB = 282,
-    tID = 283
+    tINF = 274,
+    tSUP = 275,
+    tPO = 276,
+    tPF = 277,
+    tAO = 278,
+    tAF = 279,
+    tPV = 280,
+    tVIR = 281,
+    tFL = 282,
+    tERROR = 283,
+    tNB = 284,
+    tID = 285
   };
 #endif
 /* Tokens.  */
-#define gtIF 258
-#define tIF 259
-#define tELSE 260
+#define tIF 258
+#define tELSE 259
+#define tELSIF 260
 #define tWHILE 261
 #define tMAIN 262
 #define tVOID 263
@@ -94,16 +96,18 @@ extern int yydebug;
 #define tADD 271
 #define tMUL 272
 #define tDIV 273
-#define tPO 274
-#define tPF 275
-#define tAO 276
-#define tAF 277
-#define tPV 278
-#define tVIR 279
-#define tFL 280
-#define tERROR 281
-#define tNB 282
-#define tID 283
+#define tINF 274
+#define tSUP 275
+#define tPO 276
+#define tPF 277
+#define tAO 278
+#define tAF 279
+#define tPV 280
+#define tVIR 281
+#define tFL 282
+#define tERROR 283
+#define tNB 284
+#define tID 285
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
@@ -112,7 +116,7 @@ union YYSTYPE
 #line 8 "analyzer.y"
  int nb; char var; 
 
-#line 116 "y.tab.h"
+#line 120 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;
