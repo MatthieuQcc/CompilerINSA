@@ -45,7 +45,7 @@ Elseifs : ElsIf
 ElsIf : tELSIF tPO Cond tPF tAO Instructions tAF
 
 
-tType : tINT
+tType :	 tINT
 		| tVOID
 
 Calcul :	  tExpr tPV { printf("Calcul\n"); }

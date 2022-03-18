@@ -29,28 +29,24 @@ nom | adresse | type | profondeur
 
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
+#include <string.h>
+#define TAILLE_MAX 1024
 
-typedef struct {
+typedef struct symbol {
     char *name;
     int address;
     char *type;
     int prof; 
-
 } symbol;
 
+symbol symbTab[TAILLE_MAX] = {NULL};
 
-typedef struct {
-    symbol currentSymbol;
-    symbList *next;
-} symbList;
+bool checkSymbol(char*, char*); // Regarde si un symbole existe
 
-symbList newList;
+void addSymbol(char*, char*); // Ajoute un symbole
 
-
-void checkSymbol(symbol, symbList); // Regarde si un symbole existe
-
-void addSymbol(); // Ajoute un symbole
+void afficher(void);
 
