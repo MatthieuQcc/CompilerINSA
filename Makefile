@@ -5,7 +5,7 @@ BIN=analyzer
 CC=gcc
 CFLAGS=-Wall -g
 
-OBJ=y.tab.o lex.yy.o 
+OBJ=ts.o y.tab.o lex.yy.o 
  
 all: $(BIN)
 

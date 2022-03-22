@@ -42,11 +42,11 @@ typedef struct symbol {
     int prof; 
 } symbol;
 
-symbol symbTab[TAILLE_MAX] = {NULL};
 
-bool checkSymbol(char*, char*); // Regarde si un symbole existe
 
-void addSymbol(char*, char*); // Ajoute un symbole
+bool checkSymbol(char*, char*, symbol*); // Regarde si un symbole existe
 
-void afficher(void);
+void addSymbol(char*, char*,symbol*); // Ajoute un symbole
+
+void afficher(symbol*);
 

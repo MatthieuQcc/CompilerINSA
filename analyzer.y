@@ -1,6 +1,10 @@
 %{
 #include <stdlib.h>
 #include <stdio.h>
+#include "ts.h"
+
+symbol symbTab[TAILLE_MAX];
+
 int var[26];
 int yylex();
 void yyerror(char *s);
@@ -16,6 +20,7 @@ Compiler : tType tMAIN tPO tPF tAO Body tAF
 		| tType tMAIN tPO tType tPF tAO Body tAF
 Body : Instructions tRETURN tINT { printf("Body of the function\n"); }
 		|Instructions { printf("Body of the function\n"); }
+		| tRETURN tINT tPV { printf("Body of the function\n"); }
 
 Instructions : Instruction
 		| Instruction Instructions
@@ -25,8 +30,8 @@ Instruction : Declaration
 		| BoucleWhile 
 		| BoucleIf 
 
-Declaration :  tType tID tEGAL tNB tPV { printf("Declaration\n"); } 
-		| tType tID tPV { printf("Declaration\n"); } 
+Declaration :  tType tID tEGAL tNB tPV {addSymbol($2,$1,symbTab);} 
+		| tType tID tPV { addSymbol($2,$1,symbTab); } 
 		| tType Calcul { printf("Declaration\n"); } 
 
 Affectation : tID tEGAL tNB tPV { printf("Affectation\n"); }

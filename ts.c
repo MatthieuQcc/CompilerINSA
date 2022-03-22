@@ -3,21 +3,24 @@
 
 int count = 0;
 
-bool checkSymbol(char* name, char* type){
-    bool find = false;
-    // On parcourt la liste et on voit si le symbole est présent
-    for(int i=0; i< count; i++){
-        if(!(find) && (strcmp(symbTab[i].name,name))) {
-            find = true;
+bool checkSymbol(char* name, char* type, symbol* symbTab){
+    //bool find = false;
+    // On parcourt la liste et on voit si le symbole est présent   
+    if (name != NULL && type != NULL)
+
+    for(int i=0; i<count; i++){
+
+        if(strcmp(symbTab[i].name,name)==0) {
+            return true;
         }
     }
-    return find;
+    return false;
 }
 
 
-void addSymbol(char* name, char* type){
-    if (!(checkSymbol(name,type))) {
-        printf("dans checksymbol\n");
+void addSymbol(char* name, char* type, symbol* symbTab){
+
+    if (!(checkSymbol(name,type,symbTab))) {
         symbTab[count].name = strdup(name);
         symbTab[count].address = count;
         symbTab[count].type = strdup(type);
@@ -26,7 +29,7 @@ void addSymbol(char* name, char* type){
     }
 }
 
-void afficher () {
+void afficher (symbol* symbTab) {
     for (int i = 0 ; i < 29 ; i++) {
         printf("-");
     }
@@ -42,13 +45,10 @@ void afficher () {
     printf("\n");
     
 }
-int main(){
+/*int main(){
     addSymbol("aaa", "int");
-    printf("%i\n",count);
-    addSymbol("bbb", "int2");
-    printf("%i\n",count);
+    addSymbol("bbb", "int");
     addSymbol("ccc", "int");
-    printf("%i\n",count);
     addSymbol("ddd", "int");
     afficher();
-}
+}*/
