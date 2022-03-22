@@ -72,13 +72,14 @@
 #include <stdio.h>
 #include "ts.h"
 
-symbol symbTab[TAILLE_MAX];
+
+symbol symbTab[TAILLE_MAX] = { NULL };
 
 int var[26];
 int yylex();
 void yyerror(char *s);
 
-#line 82 "y.tab.c"
+#line 83 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -190,10 +191,10 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 12 "analyzer.y"
+#line 13 "analyzer.y"
  int nb; char var; 
 
-#line 197 "y.tab.c"
+#line 198 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -571,11 +572,11 @@ static const yytype_int8 yytranslate[] =
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    19,    19,    20,    21,    22,    23,    25,    26,    27,
-      28,    29,    30,    31,    33,    34,    35,    37,    39,    41,
-      42,    43,    45,    47,    48,    50,    53,    54,    56,    57,
-      59,    60,    61,    63,    64,    65,    67,    68,    69,    71,
-      72,    73,    74
+       0,    20,    20,    21,    22,    23,    24,    26,    27,    28,
+      29,    30,    31,    32,    34,    35,    36,    38,    40,    42,
+      43,    44,    46,    48,    49,    51,    54,    55,    57,    58,
+      60,    61,    62,    64,    65,    66,    68,    69,    70,    72,
+      73,    74,    75
 };
 #endif
 
@@ -1428,139 +1429,139 @@ yyreduce:
   switch (yyn)
     {
   case 4:
-#line 21 "analyzer.y"
+#line 22 "analyzer.y"
                                  { printf("Body of the function\n"); }
-#line 1434 "y.tab.c"
+#line 1435 "y.tab.c"
     break;
 
   case 5:
-#line 22 "analyzer.y"
+#line 23 "analyzer.y"
                               { printf("Body of the function\n"); }
-#line 1440 "y.tab.c"
+#line 1441 "y.tab.c"
     break;
 
   case 6:
-#line 23 "analyzer.y"
+#line 24 "analyzer.y"
                                    { printf("Body of the function\n"); }
-#line 1446 "y.tab.c"
+#line 1447 "y.tab.c"
     break;
 
   case 14:
-#line 33 "analyzer.y"
-                                       {addSymbol((yyvsp[-3].var),(yyvsp[-4].nb),symbTab);}
-#line 1452 "y.tab.c"
+#line 34 "analyzer.y"
+                                       { printf("$1 : %d, $2 : %d", (yyvsp[-4].nb),(yyvsp[-3].var));}
+#line 1453 "y.tab.c"
     break;
 
   case 15:
-#line 34 "analyzer.y"
+#line 35 "analyzer.y"
                                 { addSymbol((yyvsp[-1].var),(yyvsp[-2].nb),symbTab); }
-#line 1458 "y.tab.c"
+#line 1459 "y.tab.c"
     break;
 
   case 16:
-#line 35 "analyzer.y"
+#line 36 "analyzer.y"
                                { printf("Declaration\n"); }
-#line 1464 "y.tab.c"
+#line 1465 "y.tab.c"
     break;
 
   case 17:
-#line 37 "analyzer.y"
+#line 38 "analyzer.y"
                                 { printf("Affectation\n"); }
-#line 1470 "y.tab.c"
+#line 1471 "y.tab.c"
     break;
 
   case 18:
-#line 39 "analyzer.y"
+#line 40 "analyzer.y"
                                                         { printf("Boucle While\n"); }
-#line 1476 "y.tab.c"
+#line 1477 "y.tab.c"
     break;
 
   case 19:
-#line 41 "analyzer.y"
+#line 42 "analyzer.y"
                                                  { printf("Boucle if\n"); }
-#line 1482 "y.tab.c"
+#line 1483 "y.tab.c"
     break;
 
   case 20:
-#line 42 "analyzer.y"
+#line 43 "analyzer.y"
                                                                 { printf("Boucle if\n"); }
-#line 1488 "y.tab.c"
+#line 1489 "y.tab.c"
     break;
 
   case 21:
-#line 43 "analyzer.y"
+#line 44 "analyzer.y"
                                                              { printf("Boucle if\n"); }
-#line 1494 "y.tab.c"
+#line 1495 "y.tab.c"
     break;
 
   case 28:
-#line 56 "analyzer.y"
+#line 57 "analyzer.y"
                             { printf("Calcul\n"); }
-#line 1500 "y.tab.c"
+#line 1501 "y.tab.c"
     break;
 
   case 29:
-#line 57 "analyzer.y"
+#line 58 "analyzer.y"
                                       { var[(int)(yyvsp[-3].var)] = (yyvsp[-1].nb); printf("Calcul\n");}
-#line 1506 "y.tab.c"
+#line 1507 "y.tab.c"
     break;
 
   case 30:
-#line 59 "analyzer.y"
+#line 60 "analyzer.y"
                                      { (yyval.nb) = (yyvsp[-2].nb) + (yyvsp[0].nb); }
-#line 1512 "y.tab.c"
+#line 1513 "y.tab.c"
     break;
 
   case 31:
-#line 60 "analyzer.y"
+#line 61 "analyzer.y"
                                      { (yyval.nb) = (yyvsp[-2].nb) - (yyvsp[0].nb); }
-#line 1518 "y.tab.c"
+#line 1519 "y.tab.c"
     break;
 
   case 32:
-#line 61 "analyzer.y"
+#line 62 "analyzer.y"
                           { (yyval.nb) = (yyvsp[0].nb); }
-#line 1524 "y.tab.c"
+#line 1525 "y.tab.c"
     break;
 
   case 33:
-#line 63 "analyzer.y"
+#line 64 "analyzer.y"
                                       { (yyval.nb) = (yyvsp[-2].nb) * (yyvsp[0].nb); }
-#line 1530 "y.tab.c"
+#line 1531 "y.tab.c"
     break;
 
   case 34:
-#line 64 "analyzer.y"
+#line 65 "analyzer.y"
                                       { (yyval.nb) = (yyvsp[-2].nb) / (yyvsp[0].nb); }
-#line 1536 "y.tab.c"
+#line 1537 "y.tab.c"
     break;
 
   case 35:
-#line 65 "analyzer.y"
+#line 66 "analyzer.y"
                          { (yyval.nb) = (yyvsp[0].nb); }
-#line 1542 "y.tab.c"
+#line 1543 "y.tab.c"
     break;
 
   case 36:
-#line 67 "analyzer.y"
+#line 68 "analyzer.y"
                                         { (yyval.nb) = (yyvsp[-1].nb); }
-#line 1548 "y.tab.c"
+#line 1549 "y.tab.c"
     break;
 
   case 37:
-#line 68 "analyzer.y"
+#line 69 "analyzer.y"
                       { (yyval.nb) = var[(yyvsp[0].var)]; }
-#line 1554 "y.tab.c"
+#line 1555 "y.tab.c"
     break;
 
   case 38:
-#line 69 "analyzer.y"
+#line 70 "analyzer.y"
                       { (yyval.nb) = (yyvsp[0].nb); }
-#line 1560 "y.tab.c"
+#line 1561 "y.tab.c"
     break;
 
 
-#line 1564 "y.tab.c"
+#line 1565 "y.tab.c"
 
       default: break;
     }
@@ -1792,7 +1793,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 78 "analyzer.y"
+#line 79 "analyzer.y"
 
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
 int main(void) {

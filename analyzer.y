@@ -3,7 +3,8 @@
 #include <stdio.h>
 #include "ts.h"
 
-symbol symbTab[TAILLE_MAX];
+
+symbol symbTab[TAILLE_MAX] = { NULL };
 
 int var[26];
 int yylex();
@@ -30,7 +31,7 @@ Instruction : Declaration
 		| BoucleWhile 
 		| BoucleIf 
 
-Declaration :  tType tID tEGAL tNB tPV {addSymbol($2,$1,symbTab);} 
+Declaration :  tType tID tEGAL tNB tPV { printf("$1 : %d, $2 : %d", $1,$2);}//{ addSymbol($2,$1,symbTab);} 
 		| tType tID tPV { addSymbol($2,$1,symbTab); } 
 		| tType Calcul { printf("Declaration\n"); } 
 

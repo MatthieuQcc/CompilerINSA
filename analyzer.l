@@ -6,13 +6,11 @@
 %}
 
 %option noyywrap
-
 %%
 
 
-
 [ \n\t]+ {};
-[0-9]+	{ return tNB; }
+[0-9]+	{ yylval.nb = atoi(yytext); return tNB; }
 
 if { return tIF; }
 else {return tELSE; }
@@ -40,7 +38,7 @@ void { return tVOID; }
 "<" { return tINF; }
 ">" { return tSUP; }
 
-[a-z]+	{ return tID; }
+[a-z]+	{ yylval.var=strdup(yytext); return tID;}
 
 \n	{ return tFL; }
 .	{ return tERROR; }

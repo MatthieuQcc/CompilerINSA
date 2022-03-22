@@ -2,16 +2,18 @@
 
 
 int count = 0;
+//symbol symbTab[TAILLE_MAX] = { NULL };
 
 bool checkSymbol(char* name, char* type, symbol* symbTab){
     //bool find = false;
     // On parcourt la liste et on voit si le symbole est présent   
-    if (name != NULL && type != NULL)
+    if (name != NULL && type != NULL) {
 
-    for(int i=0; i<count; i++){
+        for(int i=0; i<count; i++){
 
-        if(strcmp(symbTab[i].name,name)==0) {
-            return true;
+            if(strcmp(symbTab[i].name,name)==0) {
+                return true;
+            }
         }
     }
     return false;
@@ -45,10 +47,12 @@ void afficher (symbol* symbTab) {
     printf("\n");
     
 }
-/*int main(){
-    addSymbol("aaa", "int");
-    addSymbol("bbb", "int");
-    addSymbol("ccc", "int");
-    addSymbol("ddd", "int");
-    afficher();
-}*/
+/*
+int main(){
+    addSymbol("aaa", "int",symbTab);
+    addSymbol("bbb", "int",symbTab);
+    addSymbol("ccc", "int",symbTab);
+    addSymbol("ddd", "int",symbTab);
+    afficher(symbTab);
+}
+*/

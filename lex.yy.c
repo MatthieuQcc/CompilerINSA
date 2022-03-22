@@ -706,12 +706,11 @@ YY_DECL
 		}
 
 	{
-#line 10 "analyzer.l"
+#line 9 "analyzer.l"
 
 
 
-
-#line 715 "lex.yy.c"
+#line 714 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -771,156 +770,156 @@ do_action:	/* This label is used only to access EOF actions. */
 case 1:
 /* rule 1 can match eol */
 YY_RULE_SETUP
-#line 14 "analyzer.l"
+#line 12 "analyzer.l"
 {};
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 15 "analyzer.l"
-{ return tNB; }
+#line 13 "analyzer.l"
+{ yylval.nb = atoi(yytext); return tNB; }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 17 "analyzer.l"
+#line 15 "analyzer.l"
 { return tIF; }
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 18 "analyzer.l"
+#line 16 "analyzer.l"
 {return tELSE; }
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 19 "analyzer.l"
+#line 17 "analyzer.l"
 { return tELSIF; }
 	YY_BREAK
 case 6:
 YY_RULE_SETUP
-#line 20 "analyzer.l"
+#line 18 "analyzer.l"
 { return tWHILE; }
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 21 "analyzer.l"
+#line 19 "analyzer.l"
 { return tMAIN; }
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 22 "analyzer.l"
+#line 20 "analyzer.l"
 { return tVOID; }
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 23 "analyzer.l"
+#line 21 "analyzer.l"
 { return tCONST; }
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 24 "analyzer.l"
+#line 22 "analyzer.l"
 { return tINT; }
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 25 "analyzer.l"
+#line 23 "analyzer.l"
 { return tPRINTF; }
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 26 "analyzer.l"
+#line 24 "analyzer.l"
 { return tRETURN; }
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 27 "analyzer.l"
+#line 25 "analyzer.l"
 { return tVOID; }
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 29 "analyzer.l"
+#line 27 "analyzer.l"
 { return tEGAL; }
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 30 "analyzer.l"
+#line 28 "analyzer.l"
 { return tSOU; }
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 31 "analyzer.l"
+#line 29 "analyzer.l"
 { return tADD; }
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 32 "analyzer.l"
+#line 30 "analyzer.l"
 { return tMUL; }
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 33 "analyzer.l"
+#line 31 "analyzer.l"
 { return tDIV; }
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 34 "analyzer.l"
+#line 32 "analyzer.l"
 { return tPO; }
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 35 "analyzer.l"
+#line 33 "analyzer.l"
 { return tPF; }
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 36 "analyzer.l"
+#line 34 "analyzer.l"
 { return tAO; }
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 37 "analyzer.l"
+#line 35 "analyzer.l"
 { return tAF; }
 	YY_BREAK
 case 23:
 YY_RULE_SETUP
-#line 38 "analyzer.l"
+#line 36 "analyzer.l"
 { return tPV; }
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 39 "analyzer.l"
+#line 37 "analyzer.l"
 { return tVIR; }
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 40 "analyzer.l"
+#line 38 "analyzer.l"
 { return tINF; }
 	YY_BREAK
 case 26:
 YY_RULE_SETUP
-#line 41 "analyzer.l"
+#line 39 "analyzer.l"
 { return tSUP; }
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 43 "analyzer.l"
-{ return tID; }
+#line 41 "analyzer.l"
+{ yylval.var=strdup(yytext); return tID;}
 	YY_BREAK
 case 28:
 /* rule 28 can match eol */
 YY_RULE_SETUP
-#line 45 "analyzer.l"
+#line 43 "analyzer.l"
 { return tFL; }
 	YY_BREAK
 case 29:
 YY_RULE_SETUP
-#line 46 "analyzer.l"
+#line 44 "analyzer.l"
 { return tERROR; }
 	YY_BREAK
 case 30:
 YY_RULE_SETUP
-#line 47 "analyzer.l"
+#line 45 "analyzer.l"
 ECHO;
 	YY_BREAK
-#line 924 "lex.yy.c"
+#line 923 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1925,4 +1924,4 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 47 "analyzer.l"
+#line 45 "analyzer.l"
