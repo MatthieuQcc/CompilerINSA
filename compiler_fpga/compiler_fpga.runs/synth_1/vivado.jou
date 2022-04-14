@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 14 11:54:01 2022
+# Process ID: 40919
+# Current directory: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/compiler_fpga/compiler_fpga.runs/synth_1
+# Command line: vivado -log compiler_fpga.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source compiler_fpga.tcl
+# Log file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/compiler_fpga/compiler_fpga.runs/synth_1/compiler_fpga.vds
+# Journal file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/compiler_fpga/compiler_fpga.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source compiler_fpga.tcl -notrace

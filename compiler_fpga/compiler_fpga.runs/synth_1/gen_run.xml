@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1649930040">
+  <File Type="VDS-TIMING-PB" Name="compiler_fpga_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="compiler_fpga_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="compiler_fpga.dcp"/>
+  <File Type="PA-TCL" Name="compiler_fpga.tcl"/>
+  <File Type="REPORTS-TCL" Name="compiler_fpga_reports.tcl"/>
+  <File Type="RDS-RDS" Name="compiler_fpga.vds"/>
+  <File Type="RDS-PROPCONSTRS" Name="compiler_fpga_drc_synth.rpt"/>
+  <File Type="RDS-UTIL" Name="compiler_fpga_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="compiler_fpga_utilization_synth.pb"/>
+  <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
+    <Filter Type="Srcs"/>
+    <File Path="$PSRCDIR/sources_1/new/compiler_fpga.vhd">
+      <FileInfo SFType="VHDL2008">
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <Config>
+      <Option Name="DesignMode" Val="RTL"/>
+      <Option Name="TopModule" Val="compiler_fpga"/>
+      <Option Name="TopAutoSet" Val="TRUE"/>
+    </Config>
+  </FileSet>
+  <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
+    <Filter Type="Constrs"/>
+    <Config>
+      <Option Name="ConstrsType" Val="XDC"/>
+    </Config>
+  </FileSet>
+  <Strategy Version="1" Minor="2">
+    <StratHandle Name="Vivado Synthesis Defaults" Flow="Vivado Synthesis 2018"/>
+    <Step Id="synth_design"/>
+  </Strategy>
+</GenRun>

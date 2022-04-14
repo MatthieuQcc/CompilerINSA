@@ -46,10 +46,15 @@ entity compiler_fpga is
 end compiler_fpga;
 
 architecture Behavioral of compiler_fpga is
+
     signal S_aux : std_logic_vector(31 downto 0) := (others => '0');
+    
 begin
+
     process (Ctrl_Alu, A, B) 
+    
     begin
+    
         S_aux <= ((x"00" & A) + (x"00" & B)) when Ctrl_Alu = ('0', '0', '0') else
         ((x"00" & A) - (x"00" & B)) when Ctrl_Alu = ('0', '0', '1') else
         std_logic_vector(to_unsigned(to_integer(unsigned(x"00" & A)) / to_integer(unsigned(x"00" & B)), 16)) when Ctrl_Alu = ('0', '1', '0') else
@@ -59,5 +64,6 @@ begin
     S <= S_aux(15 downto 0);
     C <= '1' when S_aux(16) = '1';
     Z <= '1' when S_aux = (others => '0');
+    N <= '1' when S_aux(15) = '1';
 
 end Behavioral;
