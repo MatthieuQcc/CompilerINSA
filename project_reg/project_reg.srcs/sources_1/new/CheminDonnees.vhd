@@ -32,10 +32,24 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity CheminDonnees is
---  Port ( );
+    Port(   
+        
+        LI_DI_A : inout STD_LOGIC_VECTOR (7 downto 0);
+        LI_DI_B : inout STD_LOGIC_VECTOR (7 downto 0);
+        LI_DI_OP : inout STD_LOGIC_VECTOR (7 downto 0);
+        LI_DI_C : in STD_LOGIC_VECTOR (7 downto 0)
+        
+        );
+
 end CheminDonnees;
 
 architecture Behavioral of CheminDonnees is
+
+COMPONENT memoire_instructions is
+    Port ( add : in STD_LOGIC_VECTOR (7 downto 0);
+           CLK : in STD_LOGIC;
+           output : out STD_LOGIC_VECTOR (31 downto 0));
+end COMPONENT;
 
 begin
 

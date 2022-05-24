@@ -10,3 +10,5 @@
 # Journal file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/vivado.jou
 #-----------------------------------------------------------
 start_gui
+open_project /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr
+update_compile_order -fileset sources_1
