@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Tue May 24 12:08:39 2022
+# Process ID: 2091
+# Current directory: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg
+# Command line: vivado
+# Log file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/vivado.log
+# Journal file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr
+update_compile_order -fileset sources_1
+open_hw
+close_hw
