@@ -35,7 +35,7 @@ entity Compteur is
     Port ( Entree_1 : in STD_LOGIC;
            Entree_2 : in STD_LOGIC_VECTOR (3 downto 0);
            Sortie_1 : out STD_LOGIC;
-           Sortie_2 : in STD_LOGIC_VECTOR (0 downto 0));
+           Sortie_2 : out STD_LOGIC_VECTOR (0 downto 0));
 end Compteur;
 
 architecture Behavioral of Compteur is
