@@ -59,6 +59,7 @@ begin
             when "01" => S_aux <= ((x"00" & A) - (x"00" & B));
             when "10" => S_aux <= (A * B);
             when "11" => S_aux <=  std_logic_vector(to_unsigned(to_integer(unsigned(x"00" & A)) / to_integer(unsigned(x"00" & B)), 16));
+            when others => S_aux <= x"0000";
         end case;  
      end process;
     

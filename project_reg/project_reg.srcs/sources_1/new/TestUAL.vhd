@@ -19,7 +19,7 @@ architecture Behavioral of TestUAL is
 
 COMPONENT UAL is
 PORT(
-    A : IN std_logic_vector(7 downto 0); 
+    A : in std_logic_vector(7 downto 0); 
     B : in STD_LOGIC_VECTOR (7 downto 0);
     S : out STD_LOGIC_VECTOR (7 downto 0);
     Ctrl_Alu : in STD_LOGIC_VECTOR (1 downto 0); 
@@ -40,8 +40,6 @@ signal t_N : STD_LOGIC := '0';
 signal t_O : STD_LOGIC := '0';
 signal t_Z : STD_LOGIC := '0';
 signal t_C : STD_LOGIC := '0';
-
-constant Clock_period : time := 10 ns;
 
 begin
 
