@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/TestUAL.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity TestUAL
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity UAL

@@ -48,21 +48,20 @@ end UAL;
 architecture Behavioral of UAL is
 
     signal S_aux : std_logic_vector(15 downto 0) := (others => '0');
+    signal A_aux : std_logic_vector(15 downto 0) := (others => '0');
+    signal B_aux : std_logic_vector(15 downto 0) := (others => '0');
     
 begin
 
-    process
-    
-        begin
-            case Ctrl_Alu is
-            when "00" => S_aux <= ((x"00" & A) + (x"00" & B));
-            when "01" => S_aux <= ((x"00" & A) - (x"00" & B));
-            when "10" => S_aux <= (A * B);
-            when "11" => S_aux <=  std_logic_vector(to_unsigned(to_integer(unsigned(x"00" & A)) / to_integer(unsigned(x"00" & B)), 16));
-            when others => S_aux <= x"0000";
-        end case;  
-     end process;
-    
+    -- 00 : add // 01 : sub // 10 : mul // 11 : div
+    A_aux <= x"00" & A;
+    B_aux <= x"00" & B;
+         
+    S_aux <= A_aux + B_aux when Ctrl_Alu=x"00" else 
+             A_aux - B_aux  when Ctrl_Alu=x"01" else 
+             (A * B)  when Ctrl_Alu=x"10" else 
+             std_logic_vector(to_unsigned(to_integer(unsigned(A_aux)) / to_integer(unsigned(B_aux)), 16)) when Ctrl_Alu=x"11" ;
+            
     
     
     N <= '1' when Ctrl_Alu = x"01" and A<B else '0';--peut etre <0 que dans la cas d'une soustraction ou A<B
