@@ -53,14 +53,13 @@ architecture Behavioral of UAL is
     
 begin
 
-    -- 00 : add // 01 : sub // 10 : mul // 11 : div
+    -- 00 : add // 01 : sub // 10 : mul
     A_aux <= x"00" & A;
     B_aux <= x"00" & B;
          
     S_aux <= A_aux + B_aux when Ctrl_Alu=x"00" else 
              A_aux - B_aux  when Ctrl_Alu=x"01" else 
-             (A * B)  when Ctrl_Alu=x"10" else 
-             std_logic_vector(to_unsigned(to_integer(unsigned(A_aux)) / to_integer(unsigned(B_aux)), 16)) when Ctrl_Alu=x"11" ;
+             (A * B)  when Ctrl_Alu=x"10" ;
             
     
     
