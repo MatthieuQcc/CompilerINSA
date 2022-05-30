@@ -26,7 +26,7 @@ void addSymbol(char* name, char* type, symbol* symbTab){
         symbTab[count].name = strdup(name);
         symbTab[count].address = count;
         symbTab[count].type = strdup(type);
-        symbTab[count].prof = 0;
+        symbTab[count].scope = 0;
         count++;
     }
 }

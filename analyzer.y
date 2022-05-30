@@ -1,7 +1,7 @@
 %{
 #include <stdlib.h>
 #include <stdio.h>
-#include "ts.h"
+#include "table_symbole.h"
 
 
 symbol symbTab[TAILLE_MAX] = { NULL };
@@ -19,6 +19,7 @@ void yyerror(char *s);
 %%
 Compiler : tType tMAIN tPO tPF tAO Body tAF
 		| tType tMAIN tPO tType tPF tAO Body tAF
+		
 Body : Instructions tRETURN tINT { printf("Body of the function\n"); }
 		|Instructions { printf("Body of the function\n"); }
 		| tRETURN tINT tPV { printf("Body of the function\n"); }

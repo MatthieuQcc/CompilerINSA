@@ -1,8 +1,4 @@
 /*
-############################
-#### Table des symboles ####
-############################
-
 main(){
     int a;
     int b;
@@ -33,13 +29,25 @@ nom | adresse | type | profondeur
 #include <stdlib.h>
 #include <stdbool.h>
 #include <string.h>
+
 #define TAILLE_MAX 1024
+
+
+// On doit gérer les contraintes de profondeur des variables
+// On  va créer des fonctions pour augmenter et diminuer la profondeur (scope) au fil du code
+
+// Augmente la profondeur
+void up_scope();
+
+// Diminue la profondeur
+void down_scope();
+
 
 typedef struct symbol {
     char *name;
     int address;
     char *type;
-    int prof; 
+    int scope; 
 } symbol;
 
 
