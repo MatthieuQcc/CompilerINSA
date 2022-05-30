@@ -49,7 +49,8 @@ architecture Behavioral of CheminDonnees is
     COMPONENT memoire_instructions is
         Port ( add : in STD_LOGIC_VECTOR (7 downto 0);
                CLK : in STD_LOGIC;
-               output : out STD_LOGIC_VECTOR (31 downto 0));
+               output : out STD_LOGIC_VECTOR (31 downto 0)
+               );
     end COMPONENT;
     
     
@@ -62,9 +63,21 @@ architecture Behavioral of CheminDonnees is
                RST : in STD_LOGIC;
                CLK : in STD_LOGIC;
                QA : out STD_LOGIC_VECTOR (7 downto 0);
-               QB : out STD_LOGIC_VECTOR (7 downto 0));
+               QB : out STD_LOGIC_VECTOR (7 downto 0)
+               );
     end COMPONENT;
     
+    COMPONENT UAL is 
+        Port ( A : in STD_LOGIC_VECTOR (7 downto 0);
+               B : in STD_LOGIC_VECTOR (7 downto 0);
+               Ctrl_Alu : in STD_LOGIC_VECTOR (1 downto 0);
+               N : out STD_LOGIC;
+               O : out STD_LOGIC;
+               Z : out STD_LOGIC;
+               C : out STD_LOGIC;
+               S : out STD_LOGIC_VECTOR (7 downto 0)
+               );
+    end COMPONENT;
     
     
     COMPONENT memoire_donnees is
@@ -73,7 +86,8 @@ architecture Behavioral of CheminDonnees is
                RW : in STD_LOGIC;
                RST : in STD_LOGIC;
                CLK : in STD_LOGIC;
-               output : out STD_LOGIC_VECTOR (7 downto 0));
+               output : out STD_LOGIC_VECTOR (7 downto 0)
+               );
     end COMPONENT;
     
     
@@ -101,6 +115,8 @@ architecture Behavioral of CheminDonnees is
     --Pointeur d'instruction
     signal IP : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     
+    --Comparateur logique RE
+    signal LC_RE : STD_LOGIC := '0';
     
     
     begin
@@ -112,16 +128,20 @@ architecture Behavioral of CheminDonnees is
     );
     
     banc : banc_registre port Map (
-        add_A 
-        add_B 
-        add_W 
-        W 
-        DATA 
-        RST 
-        CLK
-        QA 
-        QB 
+        add_A => (others => '0'),
+        add_B => (others => '0'),
+        add_W => MEM_RE_A(3 downto 0),
+        W => LC_RE,
+        DATA => MEM_RE_B,
+        RST => rst_cpu,
+        CLK => CLK_cpu
         );
+        
+    --ual : UAL port MAP (
+    -- );
+    
+    
+        
     
     
     

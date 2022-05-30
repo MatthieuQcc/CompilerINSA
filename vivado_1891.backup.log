@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Mon May 30 15:39:19 2022
-# Process ID: 1936
+# Start of session at: Mon May 30 13:33:12 2022
+# Process ID: 1891
 # Current directory: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA
 # Command line: vivado
 # Log file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/vivado.log
@@ -11,4 +11,12 @@
 #-----------------------------------------------------------
 start_gui
 open_project /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:14 ; elapsed = 00:00:16 . Memory (MB): peak = 6155.328 ; gain = 115.457 ; free physical = 4577 ; free virtual = 15182
 update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Mon May 30 15:16:08 2022...
