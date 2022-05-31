@@ -10,3 +10,14 @@
 # Journal file: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/vivado.jou
 #-----------------------------------------------------------
 start_gui
+open_project /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:06 . Memory (MB): peak = 6146.668 ; gain = 124.125 ; free physical = 4952 ; free virtual = 15475
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+exit
+INFO: [Common 17-206] Exiting Vivado at Tue May 31 16:55:20 2022...
