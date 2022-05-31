@@ -1,58 +1,72 @@
-#include "ts.h"
+#include "table_symboles.h"
+#define TAILLE_MAX 1024
 
 
-int count = 0;
-//symbol symbTab[TAILLE_MAX] = { NULL };
+typedef struct symbol {
+    char *name;
+    char *type;
+    int address;
+    int scope; 
+} symbol;
 
-bool checkSymbol(char* name, char* type, symbol* symbTab){
-    //bool find = false;
-    // On parcourt la liste et on voit si le symbole est présent   
-    if (name != NULL && type != NULL) {
+// On crée la table des symboles ayant pour taille TAILLE_MAX
+symbol symbols_tab[TAILLE_MAX];
 
-        for(int i=0; i<count; i++){
+// On initialise une profondeur à 0
+int scope = 0;
 
-            if(strcmp(symbTab[i].name,name)==0) {
-                return true;
-            }
+// On initialise une variable correspondant à l'index du tableau
+int index_tab = -1;
+
+void up_scope(){
+    scope++;
+}
+
+void down_scope(){
+    scope--;
+}
+
+void addSymbol(char* name){
+    index_tab++;
+    symbol new_symb = {
+        new_symb.name = name, 
+        new_symb.type = NULL, 
+        new_symb.address = index_tab, 
+        new_symb.scope = scope };
+    symbols_tab[index_tab] = new_symb;
+}
+
+void removeSymbols(){
+    // on vérifie qu'on ait des symboles à l'ancien scope et qu'il y ait toujours des éléments dans le tableau
+    while (symbols_tab[index_tab].scope == scope && index_tab >= 0){
+        index_tab--;
+    }
+    scope--;
+}
+
+void afficheSymbole(symbol symb){
+    printf("Name = %s, Type = %s, Addresse = %d, Scope = %d\n",
+    symb.name, symb.type, symb.address, symb.scope);
+}
+
+
+void printSymbols() {
+    // On parcout la table des symboles
+    for (int i = 0; i <= index_tab; i++){
+        // On affiche le symbole
+        afficheSymbole(symbols_tab[i]);
+    }    
+}
+
+
+int get_address(char* name){
+    int index = 0;
+    while (index <= index_tab){
+        if (strcmp(name, symbols_tab[index].name) == 0){
+            return symbols_tab[index].address;
         }
+        index++;
     }
-    return false;
+    printf("La variable n'a pas été déclarée.\n");
+    return -1;
 }
-
-
-void addSymbol(char* name, char* type, symbol* symbTab){
-
-    if (!(checkSymbol(name,type,symbTab))) {
-        symbTab[count].name = strdup(name);
-        symbTab[count].address = count;
-        symbTab[count].type = strdup(type);
-        symbTab[count].scope = 0;
-        count++;
-    }
-}
-
-void afficher (symbol* symbTab) {
-    for (int i = 0 ; i < 29 ; i++) {
-        printf("-");
-    }
-    printf("\n");
-    for(int i=0; i< count; i++){
-        printf("| @%02i | %8s | %8s | \n",i, symbTab[i].name,symbTab[i].type);
-    }
-
-    for (int i = 0 ; i < 29 ; i++) {
-        printf("-");
-    }
-    printf("\n");
-    printf("\n");
-    
-}
-/*
-int main(){
-    addSymbol("aaa", "int",symbTab);
-    addSymbol("bbb", "int",symbTab);
-    addSymbol("ccc", "int",symbTab);
-    addSymbol("ddd", "int",symbTab);
-    afficher(symbTab);
-}
-*/
