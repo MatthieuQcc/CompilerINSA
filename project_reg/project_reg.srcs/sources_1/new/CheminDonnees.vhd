@@ -71,10 +71,10 @@ architecture Behavioral of CheminDonnees is
         Port ( A : in STD_LOGIC_VECTOR (7 downto 0);
                B : in STD_LOGIC_VECTOR (7 downto 0);
                Ctrl_Alu : in STD_LOGIC_VECTOR (1 downto 0);
-               N : out STD_LOGIC;
-               O : out STD_LOGIC;
-               Z : out STD_LOGIC;
-               C : out STD_LOGIC;
+               N : out STD_LOGIC := '0';
+               O : out STD_LOGIC := '0';
+               Z : out STD_LOGIC := '0';
+               C : out STD_LOGIC := '0';
                S : out STD_LOGIC_VECTOR (7 downto 0)
                );
     end COMPONENT;
@@ -118,6 +118,8 @@ architecture Behavioral of CheminDonnees is
     --Comparateur logique RE
     signal LC_RE : STD_LOGIC := '0';
     
+    signal QA : STD_LOGIC_VECTOR (7 downto 0);
+    
     
     begin
     
@@ -138,9 +140,17 @@ architecture Behavioral of CheminDonnees is
         );
         
     --ual : UAL port MAP (
-    -- );
+    --    A => (others => '0'),
+    --    B => (others => '0'),
+    --    Ctrl_Alu => (others => '0'),
+    --   S => (others => '0')
+    --    );
     
-    
+    --mem_donnees : memoire_donnees port Map (
+    --    );
+   
+    --AFC 
+    DI_EX_B <= QA when LI_DI_OP = x"05" ;
     
         
     
