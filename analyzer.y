@@ -4,8 +4,6 @@
 #include "table_symboles.h"
 #include "table_instructions.h"
 
-symbol symbTab[TAILLE_MAX] = { NULL };
-
 int var[26];
 int yylex();
 void yyerror(char *s);
@@ -27,6 +25,7 @@ tType :	 tINT
 Parametres : Parametre
 		| 	 Parametre tVIR Parametres
 Parametre : tINT tID {addSymbol($2);};
+		|	;
 
 Body : tAO {up_scope();} Instructions tAF {removeSymbols();};
 
@@ -92,7 +91,9 @@ Print : tPRINTF tPO tID tPF tPV
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
 int main(void) {
-  printf("Compiler\n"); // yydebug=1;
+  printf("Compiler\n");
+  
+  yydebug=1;
   yyparse();
   return 0;
 }

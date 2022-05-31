@@ -19,8 +19,7 @@ lex.yy.c: $(LEX)
 	flex $<
 
 $(BIN): $(OBJ)
-	rrerer
-	$(CC) $(CFLAGS) $(CPPFLAGS) table_symboles.o table_instructions.o $^ -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) table_symboles.c table_instructions.c $^ -o $@
 
 clean:
 	rm $(OBJ) y.tab.c y.tab.h lex.yy.c
