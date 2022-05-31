@@ -14,7 +14,7 @@ void yyerror(char *s);
 %token tIF tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
 %token <nb> tNB
 %token <var> tID
-%type <nb> tExpr tTerme tDecla Cond tType
+%type <nb> tTerme Condition tType
 %start Compiler
 %%
 
@@ -40,12 +40,12 @@ Instruction : Declaration
 			| Print
 
 // Possibilité de declarer plusieurs variables à la suite
-IDs : tID {addSymbol($1);}
+IDs : tID {addSymbol($1);};
 	| tID tVIR tID {addSymbol($1);};
 
 
-Declaration : tType IDs tPV {addSymbol($2);};  
-			| tType tID tEGAL tNB tPV {addSymbol($2);};
+Declaration : tType IDs tPV  
+			| tType IDs tEGAL Calcul tPV
 
 
 Affectation : tID tEGAL Calcul tPV
@@ -62,27 +62,27 @@ DivMul : DivMul tMUL tTerme
 		| DivMul tDIV tTerme
 		| tTerme;
 
-tTerme : tPO tExpr tPF
+tTerme : tPO Calcul tPF
 		| tID
 		| tNB
 
-tExpr : tExpr tADD DivMul
-		| tExpr tSOU DivMul 
-		| DivMul;
 
-BoucleWhile :  tWHILE tPO Cond tPF tAO Instructions tAF
+BoucleWhile :  tWHILE tPO Condition tPF Body
 
 
-BoucleIf : tIF tPO Cond tPF tAO Instructions tAF 
-		|  tIF tPO Cond tPF tAO Instructions tAF Elseifs 
-		|  tIF tPO Cond tPF tAO Instructions tAF Else 
-Else : tELSE tAO Instructions tAF 
+BoucleIf : tIF tPO Condition tPF Body 
+		|  tIF tPO Condition tPF Body Elseifs 
+		|  tIF tPO Condition tPF Body Else 
+
 Elseifs : ElsIf 
 		| ElsIf Elseifs 
-ElsIf : tELSIF tPO Cond tPF tAO Instructions tAF
 
+ElsIf : tELSIF tPO Condition tPF Body
 
-Cond : tTerme tEGAL tEGAL tTerme 
+Else : tELSE Body
+
+// Condition assez simple, égalité, supériorité, et infériorité
+Condition : tTerme tEGAL tEGAL tTerme 
 	|  tTerme tINF tTerme
 	|  tTerme tSUP tTerme
 

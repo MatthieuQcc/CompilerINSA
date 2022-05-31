@@ -1,3 +1,6 @@
+#ifndef ASMH
+#define ASMH
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -20,3 +23,4 @@ void addInstrToTable(char* operation, int r0, int r1, int r2);
 //Retourne l'index de la derniere instruction dans le tableau des instructions 
 int get_index_last_instr ();
 
+#endif
