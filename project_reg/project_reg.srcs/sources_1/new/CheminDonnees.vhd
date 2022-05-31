@@ -37,9 +37,7 @@ entity CheminDonnees is
         --signal d'horloge
         CLK_cpu : in STD_LOGIC;
         --signal de reset
-        rst_cpu : in STD_LOGIC;
-        --Sortie finale
-        output_final : out STD_LOGIC_VECTOR (31 downto 0)
+        rst_cpu : in STD_LOGIC       
         );
 
 end CheminDonnees;
@@ -119,6 +117,9 @@ architecture Behavioral of CheminDonnees is
     --Comparateur logique RE (cinquieme etage)
     signal LC_RE : STD_LOGIC := '0';
     
+    --premier etage
+    signal output_mi: STD_LOGIC_VECTOR (31 downto 0);
+    
     --Deuxieme etage
     signal MUX_QA : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     signal QB_banc: STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
@@ -134,13 +135,13 @@ architecture Behavioral of CheminDonnees is
     mem_instru : memoire_instructions port Map (
         add => IP,
         CLK => CLK_cpu,
-        output => output_final
+        output => output_mi
     );
     
     --Cinquieme etage
     banc : banc_registre port Map (
-        add_A => (others => '0'),
-        add_B => (others => '0'),
+        add_A => LI_DI_B,
+        add_B => LI_DI_C,
         add_W => MEM_RE_A(3 downto 0),
         W => LC_RE,
         DATA => MEM_RE_B,
@@ -150,8 +151,9 @@ architecture Behavioral of CheminDonnees is
         QB => QB_banc
         );
         
+    --Deuxieme etage    
     alu : UAL port MAP (
-        A => DI_EX_B, --?? A evoir
+        A => DI_EX_B, 
         B => DI_EX_C,
         Ctrl_Alu => LC_EX,
         S => MUX_S
@@ -159,22 +161,43 @@ architecture Behavioral of CheminDonnees is
     
     --mem_donnees : memoire_donnees port Map (
     --    );
+    process
+    begin
+    --Premier etage 
+    --Format d'instruction : |OP|A|B|C|
+    LI_DI_A <= output_mi(23 downto 16);
+    LI_DI_OP <= output_mi(31 downto 24);
+    LI_DI_B <= output_mi(15 downto 8);
+    LI_DI_C <= output_mi(7 downto 0);
    
     --Deuxieme etage 
     DI_EX_A <= LI_DI_A;
     DI_EX_OP <= LI_DI_OP;
-    DI_EX_B <= LI_DI_A when LI_DI_OP = x"05" else MUX_QA;
+    
+    if LI_DI_OP = x"05" then 
+    --Si instruction AFC
+        DI_EX_B <= LI_DI_B ;
+    else 
+    --Pour toutes les autres instructions
+        DI_EX_B  <= MUX_QA;
+    end if;
     
     
     --Troisieme etage
     EX_MEM_A <= DI_EX_A;
     EX_MEM_OP <= DI_EX_OP; 
+    
+    if 
     EX_MEM_B <= DI_EX_B;
     
     --Quatrieme etage
     MEM_RE_A <= EX_MEM_A;
     MEM_RE_OP <= EX_MEM_OP;    
     MEM_RE_B <= EX_MEM_B;
+    
+    end process;
+    
+    
     
     
 
