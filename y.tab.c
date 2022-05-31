@@ -70,8 +70,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
-#include "ts.h"
-
+#include "table_symboles.h"
 
 symbol symbTab[TAILLE_MAX] = { NULL };
 

@@ -41,7 +41,7 @@ void removeSymbols(){
     while (symbols_tab[index_tab].scope == scope && index_tab >= 0){
         index_tab--;
     }
-    scope--;
+    down_scope();
 }
 
 void afficheSymbole(symbol symb){
