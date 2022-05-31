@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "y.tab.h"
-#include "ts.h"
+#include "table_symboles.h"
 %}
 
 %option noyywrap

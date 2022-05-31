@@ -1,3 +1,6 @@
+#ifndef SymbH
+#define SymbH
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -31,3 +34,5 @@ void printSymbols();
 
 // utile pour la table des instructions
 int get_address(char* name);
+
+#endif
