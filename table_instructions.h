@@ -12,8 +12,8 @@ typedef struct
     int r0;
     int r1;
     int r2;
+    int code_ope;
 } my_instr;
-
 
 
 // Ajoute une instruction à la table des instructions
