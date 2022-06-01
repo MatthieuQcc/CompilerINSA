@@ -62,15 +62,15 @@ extern int yydebug;
     tVIR = 268,
     tNB = 269,
     tIF = 270,
-    tID = 271,
-    tINT = 272,
-    tELSE = 273,
-    tVOID = 274,
-    tWHILE = 275,
-    tPRINTF = 276,
-    tEGAL = 277,
-    tINF = 278,
-    tSUP = 279
+    tINT = 271,
+    tELSE = 272,
+    tVOID = 273,
+    tWHILE = 274,
+    tPRINTF = 275,
+    tEGAL = 276,
+    tINF = 277,
+    tSUP = 278,
+    tID = 279
   };
 #endif
 /* Tokens.  */
@@ -87,22 +87,22 @@ extern int yydebug;
 #define tVIR 268
 #define tNB 269
 #define tIF 270
-#define tID 271
-#define tINT 272
-#define tELSE 273
-#define tVOID 274
-#define tWHILE 275
-#define tPRINTF 276
-#define tEGAL 277
-#define tINF 278
-#define tSUP 279
+#define tINT 271
+#define tELSE 272
+#define tVOID 273
+#define tWHILE 274
+#define tPRINTF 275
+#define tEGAL 276
+#define tINF 277
+#define tSUP 278
+#define tID 279
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 11 "analyzer.y"
- int nb; char var; 
+#line 14 "analyzer.y"
+ int nb; char* var; char * type; char* str
 
 #line 108 "y.tab.h"
 

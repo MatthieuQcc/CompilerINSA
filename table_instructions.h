@@ -24,15 +24,10 @@ int getLastInstr();
 
 int patchJump (int oldAdd, int newAdd, char* ope);
 
-int addVarTemp();
+int addressVarTemp();
 
-void removeVarTemp();
+/* void removeVarTemp(); */
 
-void printTable (FILE* instructionTable);
-
-
-
-
-
+void print_instruction_table();
 
 #endif

@@ -5,13 +5,13 @@
 my_instr tabInstr [MAX_INSTR];
 int tab_index = 0;
 int last_index = 0;
-int tempIndex = 1000;
+int varTempIndex = 999;
 
 //Instructions : ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI
 
 void addInstrToTable( char* operation, int r0, int r1, int r2){
     
-    my_instr instruction = {.operation="operation",.r0=r0,.r1=r1,.r2=r2};
+    my_instr instruction = {.operation=operation,.r0=r0,.r1=r1,.r2=r2};
     
     if (strcmp(operation, "ADD")==0) {
         instruction.code_ope = 1;
@@ -44,12 +44,6 @@ void addInstrToTable( char* operation, int r0, int r1, int r2){
 
 }
 
-/*void tempAddInstrToTable (char* instr) {
-    int vartemp1 = addVarTemp();
-    int vartemp2 = addVarTemp();
-    addInstrToTable(instr,vartemp1,vartemp1,vartemp2);
-}*/
-
 //index de la derniere instruction
 int getLastInstr() {
     return tab_index;
@@ -67,26 +61,39 @@ int patchJump (int oldAdd, int newAdd, char* ope) {
     return 0;
 }
 
-int addVarTemp() {
-    int indexActu = tempIndex;
-    tempIndex ++;
-    return indexActu;
+int addressVarTemp(){
+    varTempIndex++;
+    return varTempIndex;
 }
 
+
+
+void print_instruction_table(){
+    FILE* fichier;
+    fichier = fopen("./Print_Instruction_Table", "w+");
+    for (int i = 0; i < tab_index; i++){
+        fprintf(fichier, "%s %d %d %d", tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
+        fprintf(fichier, "\n");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*
 void removeVarTemp () {
-    if (tempIndex > 1000 ) {
-        tempIndex--;
+    if (varTempIndex > 1000 ) {
+        varTempIndex--;
     } else {
         printf("Données temporaires empietent sur les autres données\n");
     }
 }
-
-
-void printTable (FILE* instructionTable) {
-
-    for (int i = 0; i < last_index; i++) {
-        fprintf(instructionTable, "|%s|%d|%d|%d|\n",tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
-    }
-}
-
-
+*/

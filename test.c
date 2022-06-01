@@ -1,10 +1,6 @@
 int main()
 { 
-    if(2<3){
-        int a=4+4;
-    }
-    else if (3==5)
-    {
-        int y=6;
-    }    
+    int a = 10;
+    int b = 4;
+    a = 1+b*50;
 }
