@@ -70,3 +70,21 @@ int get_address(char* name){
     printf("La variable n'a pas été déclarée.\n");
     return -1;
 }
+
+
+int get_index_symb(char* name){
+    int index1temp = 0;
+    bool notfound = true;
+    while (index1temp<index_tab && notfound){
+        if (strcmp(name, symbols_tab[index1temp].name == 0)){
+            notfound = false;
+        }
+        index1temp++;
+    }
+    if (notfound) {
+        return -1;
+    } else {
+        return index1temp;
+    }
+    
+}

@@ -35,4 +35,7 @@ void printSymbols();
 // utile pour la table des instructions
 int get_address(char* name);
 
+int get_index_symb(char* name);
+
+
 #endif
