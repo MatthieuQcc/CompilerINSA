@@ -81,7 +81,7 @@ Grammaire
    43          | Terme tSUP Terme
    44          | Terme
 
-   45 Print: tPRINTF tPO tID tPF tPV
+   45 Print: tPRINTF tPO Calcul tPF tPV
 
 
 Terminaux, suivis des règles où ils apparaissent
@@ -109,7 +109,7 @@ Terminaux, suivis des règles où ils apparaissent
     tEGAL <nb> (276) 20 21 41
     tINF <nb> (277) 42
     tSUP <nb> (278) 43
-    tID <var> (279) 6 17 18 20 21 28 45
+    tID <var> (279) 6 17 18 20 21 28
 
 
 Non-terminaux, suivis des règles où ils apparaissent
@@ -151,7 +151,7 @@ Non-terminaux, suivis des règles où ils apparaissent
         à droite: 13
     Calcul <nb> (37)
         à gauche: 22 23 24
-        à droite: 20 21 22 23
+        à droite: 20 21 22 23 45
     DivMul <nb> (38)
         à gauche: 25 26 27
         à droite: 22 23 24 25 26
@@ -393,7 +393,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 21
 
-   45 Print: tPRINTF . tPO tID tPF tPV
+   45 Print: tPRINTF . tPO Calcul tPF tPV
 
     tPO  décalage et aller à l'état 35
 
@@ -509,21 +509,26 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 35
 
-   45 Print: tPRINTF tPO . tID tPF tPV
+   45 Print: tPRINTF tPO . Calcul tPF tPV
 
-    tID  décalage et aller à l'état 45
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
+
+    Calcul  aller à l'état 47
+    DivMul  aller à l'état 48
+    Terme   aller à l'état 49
 
 
 État 36
 
    21 Affectation: tID tEGAL . Calcul tPV
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
-    Calcul  aller à l'état 48
-    DivMul  aller à l'état 49
-    Terme   aller à l'état 50
+    Calcul  aller à l'état 50
+    DivMul  aller à l'état 48
+    Terme   aller à l'état 49
 
 
 État 37
@@ -561,8 +566,8 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    35 BlockIf: tIF $@4 tPO . Condition tPF $@5 Body
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme      aller à l'état 53
     Condition  aller à l'état 54
@@ -572,8 +577,8 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    38 BlockIf: tIF $@6 tPO . Condition tPF $@7 Body Else
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme      aller à l'état 53
     Condition  aller à l'état 55
@@ -583,20 +588,20 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    20 Affectation: tINT tID tEGAL . Calcul tPV
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Calcul  aller à l'état 56
-    DivMul  aller à l'état 49
-    Terme   aller à l'état 50
+    DivMul  aller à l'état 48
+    Terme   aller à l'état 49
 
 
 État 44
 
    32 BoucleWhile: tWHILE $@2 tPO . Condition tPF $@3 Body
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme      aller à l'état 53
     Condition  aller à l'état 57
@@ -604,53 +609,57 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 45
 
-   45 Print: tPRINTF tPO tID . tPF tPV
-
-    tPF  décalage et aller à l'état 58
-
-
-État 46
-
    29 Terme: tNB .
 
     $défaut  réduction par utilisation de la règle 29 (Terme)
 
 
-État 47
+État 46
 
    28 Terme: tID .
 
     $défaut  réduction par utilisation de la règle 28 (Terme)
 
 
-État 48
+État 47
 
-   21 Affectation: tID tEGAL Calcul . tPV
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
+   45 Print: tPRINTF tPO Calcul . tPF tPV
 
-    tSOU  décalage et aller à l'état 59
-    tADD  décalage et aller à l'état 60
-    tPV   décalage et aller à l'état 61
+    tSOU  décalage et aller à l'état 58
+    tADD  décalage et aller à l'état 59
+    tPF   décalage et aller à l'état 60
 
 
-État 49
+État 48
 
    24 Calcul: DivMul .
    25 DivMul: DivMul . tMUL Terme
    26       | DivMul . tDIV Terme
 
-    tMUL  décalage et aller à l'état 62
-    tDIV  décalage et aller à l'état 63
+    tMUL  décalage et aller à l'état 61
+    tDIV  décalage et aller à l'état 62
 
     $défaut  réduction par utilisation de la règle 24 (Calcul)
 
 
-État 50
+État 49
 
    27 DivMul: Terme .
 
     $défaut  réduction par utilisation de la règle 27 (DivMul)
+
+
+État 50
+
+   21 Affectation: tID tEGAL Calcul . tPV
+   22 Calcul: Calcul . tADD DivMul
+   23       | Calcul . tSOU DivMul
+
+    tSOU  décalage et aller à l'état 58
+    tADD  décalage et aller à l'état 59
+    tPV   décalage et aller à l'état 63
 
 
 État 51
@@ -703,8 +712,8 @@ Non-terminaux, suivis des règles où ils apparaissent
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
 
-    tSOU  décalage et aller à l'état 59
-    tADD  décalage et aller à l'état 60
+    tSOU  décalage et aller à l'état 58
+    tADD  décalage et aller à l'état 59
     tPV   décalage et aller à l'état 70
 
 
@@ -717,58 +726,58 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 58
 
-   45 Print: tPRINTF tPO tID tPF . tPV
+   23 Calcul: Calcul tSOU . DivMul
 
-    tPV  décalage et aller à l'état 72
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
+
+    DivMul  aller à l'état 72
+    Terme   aller à l'état 49
 
 
 État 59
 
-   23 Calcul: Calcul tSOU . DivMul
+   22 Calcul: Calcul tADD . DivMul
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     DivMul  aller à l'état 73
-    Terme   aller à l'état 50
+    Terme   aller à l'état 49
 
 
 État 60
 
-   22 Calcul: Calcul tADD . DivMul
+   45 Print: tPRINTF tPO Calcul tPF . tPV
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
-
-    DivMul  aller à l'état 74
-    Terme   aller à l'état 50
+    tPV  décalage et aller à l'état 74
 
 
 État 61
 
-   21 Affectation: tID tEGAL Calcul tPV .
-
-    $défaut  réduction par utilisation de la règle 21 (Affectation)
-
-
-État 62
-
    25 DivMul: DivMul tMUL . Terme
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme  aller à l'état 75
 
 
-État 63
+État 62
 
    26 DivMul: DivMul tDIV . Terme
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme  aller à l'état 76
+
+
+État 63
+
+   21 Affectation: tID tEGAL Calcul tPV .
+
+    $défaut  réduction par utilisation de la règle 21 (Affectation)
 
 
 État 64
@@ -789,8 +798,8 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    42 Condition: Terme tINF . Terme
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme  aller à l'état 78
 
@@ -799,8 +808,8 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    43 Condition: Terme tSUP . Terme
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme  aller à l'état 79
 
@@ -841,33 +850,33 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 72
 
-   45 Print: tPRINTF tPO tID tPF tPV .
-
-    $défaut  réduction par utilisation de la règle 45 (Print)
-
-
-État 73
-
    23 Calcul: Calcul tSOU DivMul .
    25 DivMul: DivMul . tMUL Terme
    26       | DivMul . tDIV Terme
 
-    tMUL  décalage et aller à l'état 62
-    tDIV  décalage et aller à l'état 63
+    tMUL  décalage et aller à l'état 61
+    tDIV  décalage et aller à l'état 62
 
     $défaut  réduction par utilisation de la règle 23 (Calcul)
 
 
-État 74
+État 73
 
    22 Calcul: Calcul tADD DivMul .
    25 DivMul: DivMul . tMUL Terme
    26       | DivMul . tDIV Terme
 
-    tMUL  décalage et aller à l'état 62
-    tDIV  décalage et aller à l'état 63
+    tMUL  décalage et aller à l'état 61
+    tDIV  décalage et aller à l'état 62
 
     $défaut  réduction par utilisation de la règle 22 (Calcul)
+
+
+État 74
+
+   45 Print: tPRINTF tPO Calcul tPF tPV .
+
+    $défaut  réduction par utilisation de la règle 45 (Print)
 
 
 État 75
@@ -888,8 +897,8 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    41 Condition: Terme tEGAL tEGAL . Terme
 
-    tNB  décalage et aller à l'état 46
-    tID  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 45
+    tID  décalage et aller à l'état 46
 
     Terme  aller à l'état 83
 

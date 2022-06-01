@@ -6,6 +6,12 @@
 #include <stdbool.h>
 #include <string.h>
 
+typedef struct symbol {
+    char *name;
+    char *type;
+    int address;
+    int scope; 
+} symbol;
 
 // On doit gérer les contraintes de profondeur des variables
 // Augmente la profondeur
@@ -25,7 +31,7 @@ void removeSymbols();
 
 
 // affiche un symbole. Utile pour plus de clarté dans la fonction printSymbols
-void afficheSymbole(symbol);
+void afficheSymbole(symbol symb);
 
 
 // Affiche la table des symboles

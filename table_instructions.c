@@ -7,6 +7,10 @@ int tab_index = 0;
 int last_index = 0;
 int varTempIndex = 999;
 
+// pour l'interpreteur
+int registre[2000];
+
+
 //Instructions : ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI
 
 void addInstrToTable( char* operation, int r0, int r1, int r2){
@@ -79,6 +83,40 @@ void print_instruction_table(){
 
 
 
+void interpreter_asm(){
+    int r0, r1, r2;
+    int index_courrant = 0;
+
+    while(index_courrant < tab_index){
+        my_instr instruction_courrante = tabInstr[index_courrant];
+        char * operation = instruction_courrante.operation;
+        r0 = instruction_courrante.r0;
+        r1 = instruction_courrante.r1;
+        r2 = instruction_courrante.r2;
+        if(strcmp(operation, "COP") == 0){
+            registre[r0] = r1;
+        }
+        if(strcmp(operation, "AFC") == 0){
+            registre[r0] = registre[r1];
+        }
+        if(strcmp(operation, "ADD") == 0){
+            registre[r0] = registre[r1]+registre[r2];
+        }
+        if(strcmp(operation, "SOU") == 0){
+            registre[r0] = registre[r1]-registre[r2];
+        }
+        if(strcmp(operation, "MUL") == 0){
+            registre[r0] = registre[r1]*registre[r2];
+        }
+        if(strcmp(operation, "DIV") == 0){
+            registre[r0] = registre[r1]/registre[r2];
+        }
+        if(strcmp(operation, "PRI") == 0){
+            printf("%d\n", registre[r0]);
+        }      
+        index_courrant++;  
+    }
+}
 
 
 

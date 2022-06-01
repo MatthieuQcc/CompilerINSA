@@ -82,7 +82,7 @@ Condition : Terme tEGAL tEGAL Terme {int temp = addressVarTemp();addInstrToTable
 	| Terme {$$=$1;};
 
 
-Print : tPRINTF tPO tID tPF tPV {addInstrToTable("PRI",$3,-1,-1);};
+Print : tPRINTF tPO Calcul tPF tPV {addInstrToTable("PRI", get_index_symb($3), -1, -1);};
 
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
@@ -101,6 +101,7 @@ int main(int argc, char** argv) {
 	//yydebug=1;
 	yyparse();
 	print_instruction_table();
+	interpreter_asm();
 	fclose(f);
 	return 0;
 }

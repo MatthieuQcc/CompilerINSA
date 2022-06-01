@@ -2,13 +2,6 @@
 #define TAILLE_MAX 1000
 
 
-typedef struct symbol {
-    char *name;
-    char *type;
-    int address;
-    int scope; 
-} symbol;
-
 // On crée la table des symboles ayant pour taille TAILLE_MAX
 symbol symbols_tab[TAILLE_MAX];
 

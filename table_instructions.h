@@ -30,4 +30,7 @@ int addressVarTemp();
 
 void print_instruction_table();
 
+
+void interpreter_asm();
+
 #endif
