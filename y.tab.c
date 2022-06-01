@@ -1574,7 +1574,7 @@ yyreduce:
 
   case 46:
 #line 85 "analyzer.y"
-                                   {addInstrToTable("PRI", get_index_symb((yyvsp[-2].nb)), -1, -1);}
+                                   {addInstrToTable("PRI", (yyvsp[-2].nb), -1, -1);}
 #line 1579 "y.tab.c"
     break;
 
