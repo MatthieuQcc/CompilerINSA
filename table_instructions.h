@@ -26,9 +26,11 @@ int patchJump (int oldAdd, int newAdd, char* ope);
 
 //int addVarTemp();
 
-//int removeVarTemp();
+int removeVarTemp();
 
 void printTable (FILE* instructionTable);
+
+
 
 
 

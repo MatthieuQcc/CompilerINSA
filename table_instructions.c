@@ -5,6 +5,7 @@
 my_instr tabInstr [MAX_INSTR];
 int tab_index = 0;
 int last_index = 0;
+int tempIndex = 1000;
 
 //Instructions : ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI
 
@@ -43,6 +44,12 @@ void addInstrToTable( char* operation, int r0, int r1, int r2){
 
 }
 
+/*void tempAddInstrToTable (char* instr) {
+    int vartemp1 = addVarTemp();
+    int vartemp2 = addVarTemp();
+    addInstrToTable(instr,vartemp1,vartemp1,vartemp2);
+}*/
+
 //index de la derniere instruction
 int getLastInstr() {
     return tab_index;
@@ -58,6 +65,20 @@ int patchJump (int oldAdd, int newAdd, char* ope) {
         return -1;
     }
     return 0;
+}
+
+int addVarTemp() {
+    int indexActu = tempIndex;
+    tempIndex ++;
+    return indexActu;
+}
+
+void removeVarTem () {
+    if (tempIndex > 1000 ) {
+        tempIndex--;
+    } else {
+        printf("Données temporaires empietent sur les autres données\n");
+    }
 }
 
 

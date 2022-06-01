@@ -9,10 +9,10 @@ int yylex();
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
-%token <nb> tNB tIF
-%token <var> tID
-%type <nb> tTerme Condition tType
+%token tELSE tELSIF tWHILE tMAIN tVOID tCONST tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
+%token <nb> tNB tIF tID tINT
+//%token <var> 
+%type <nb> Terme Condition tType Calcul DivMul
 %start Compiler
 %%
 
@@ -42,26 +42,26 @@ Instruction : Declaration
 
 // Possibilité de declarer plusieurs variables à la suite
 IDs : tID {addSymbol($1);};
-	| tID tVIR tID {addSymbol($1);addSymbol($3);};
+	| tID tVIR IDs {addSymbol($1);};
 
 
 Declaration : tType IDs tPV 
 
 
-Affectation : tINT tID tEGAL tTerme tPV {addSymbol($2); addInstrToTable("COP", get_index_symb($2),$4,-1);};
-			| tID tEGAL tTerme tPV {addSymbol($2); addInstrToTable("COP", get_index_symb($1),$3,-1);};
+Affectation : tINT tID tEGAL Calcul tPV {addSymbol($2); addInstrToTable("COP", get_index_symb($2),$4,-1);removeVarTemp();};
+			| tID tEGAL Calcul tPV {addInstrToTable("COP", get_index_symb($1),$3,-1);removeVarTemp();};
 
 
-Calcul : Calcul tADD DivMul
-		| Calcul tSOU DivMul
-		| DivMul;
+Calcul : Calcul tADD DivMul {int temp = addVarTemp();addInstrToTable("ADD",temp,$1,$3);};
+		| Calcul tSOU DivMul {int temp = addVarTemp();addInstrToTable("SOU",temp,$1,$3);};
+		| DivMul
 
-DivMul :  DivMul tMUL tTerme
-		| DivMul tDIV tTerme
-		| tTerme
+DivMul :  DivMul tMUL Terme {int temp = addVarTemp();addInstrToTable("MUL",temp,$1,$3);};
+		| DivMul tDIV Terme {int temp = addVarTemp();addInstrToTable("DIV",temp,$1,$3);};
+		| Terme
 
-tTerme :  tID
-		| tNB
+Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,get_index_symb($1),-1);removeVarTemp();};
+		| tNB {int temp = addVarTemp();addInstrToTable("AFC",temp,$1,-1);};
 
 
 BoucleWhile :  tWHILE tPO Condition tPF Body
@@ -79,9 +79,9 @@ ElsIf : tELSIF tPO Condition tPF Body
 Else : tELSE Body
 
 // Condition assez simple, égalité, supériorité, et infériorité
-Condition : tTerme tEGAL tEGAL tTerme 
-	|  tTerme tINF tTerme
-	|  tTerme tSUP tTerme
+Condition : Terme tEGAL tEGAL Terme 
+	|  Terme tINF Terme
+	|  Terme tSUP Terme
 
 
 Print : tPRINTF tPO tID tPF tPV
