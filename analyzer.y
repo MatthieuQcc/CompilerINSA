@@ -24,7 +24,7 @@ tType :	 tINT
 Parametres : Parametre
 		| 	 Parametre tVIR Parametres
 
-Parametre : tINT tID {addSymbol($2);};
+Parametre : tINT tID {addSymbol($2);addInstrToTable("AFC",)};
 		|	;
 
 Body : tAO {up_scope();} Instructions tAF {removeSymbols();};
@@ -48,8 +48,8 @@ IDs : tID {addSymbol($1);};
 Declaration : tType IDs tPV 
 
 
-Affectation : tINT tID tEGAL Calcul tPV {addSymbol($2); addInstrToTable("COP", get_index_symb($2),$4,-1);removeVarTemp();};
-			| tID tEGAL Calcul tPV {addInstrToTable("COP", get_index_symb($1),$3,-1);removeVarTemp();};
+Affectation : tINT tID tEGAL Calcul tPV {addSymbol($2); addInstrToTable("COP", $2,$4,-1);removeVarTemp();};
+			| tID tEGAL Calcul tPV {addInstrToTable("COP", $1,$3,-1);removeVarTemp();};
 
 
 Calcul : Calcul tADD DivMul {int temp = addVarTemp();addInstrToTable("ADD",temp,$1,$3);};
@@ -60,11 +60,11 @@ DivMul :  DivMul tMUL Terme {int temp = addVarTemp();addInstrToTable("MUL",temp,
 		| DivMul tDIV Terme {int temp = addVarTemp();addInstrToTable("DIV",temp,$1,$3);};
 		| Terme
 
-Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,get_index_symb($1),-1);$$=temp;};
-		| tNB {$$ = get_index_symb($1);};
+Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,$1,-1);$$=temp;};
+		| tNB {$$ =$1;};
 
 
-BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body {int endOfLoop = getLastInstr(),addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop+1,"JMF");};
+BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body {int endOfLoop = getLastInstr();addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop+1,"JMF");};
 
 
 BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body {int endOfIf = getLastInstr(); patchJump($1,endOfIf-1,"JMF");};

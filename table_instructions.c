@@ -73,7 +73,7 @@ int addVarTemp() {
     return indexActu;
 }
 
-void removeVarTem () {
+void removeVarTemp () {
     if (tempIndex > 1000 ) {
         tempIndex--;
     } else {
@@ -85,7 +85,7 @@ void removeVarTem () {
 void printTable (FILE* instructionTable) {
 
     for (int i = 0; i < last_index; i++) {
-        fprintf(instructionTable, "|%s|%d|%d|%d|%d|\n",tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
+        fprintf(instructionTable, "|%s|%d|%d|%d|\n",tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
     }
 }
 

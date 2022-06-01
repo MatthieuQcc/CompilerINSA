@@ -14,14 +14,11 @@
 
 if { return tIF; }
 else {return tELSE; }
-elsif { return tELSIF; }
 while { return tWHILE; }
 main { return tMAIN; }
 void { return tVOID; }
-const { return tCONST; }
 int { return tINT; }
 printf { return tPRINTF; }
-return { return tRETURN; }
 void { return tVOID; }
 
 "="	{ return tEGAL; }
@@ -40,5 +37,3 @@ void { return tVOID; }
 
 [a-z]+	{ yylval.var=strdup(yytext); return tID;}
 
-\n	{ return tFL; }
-.	{ return tERROR; }

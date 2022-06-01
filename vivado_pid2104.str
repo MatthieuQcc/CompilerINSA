@@ -1,0 +1,111 @@
+/*
+
+Xilinx Vivado v2018.2 (64-bit) [Major: 2018, Minor: 2]
+SW Build: 2258646 on Thu Jun 14 20:02:38 MDT 2018
+IP Build: 2256618 on Thu Jun 14 22:10:49 MDT 2018
+
+Process ID: 2104
+License: Customer
+
+Current time: 	Wed Jun 01 19:28:31 CEST 2022
+Time zone: 	Central European Time (Europe/Paris)
+
+OS: Ubuntu
+OS Version: 5.15.0-33-generic
+OS Architecture: amd64
+Available processors (cores): 12
+
+Display: :0
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 88 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/tps/lnx64/jre
+Java executable location: 	/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/tps/lnx64/jre/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 2 GB
+
+
+User name: 	oberry
+User home directory: /home/oberry
+User working directory: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA
+User country: 	FR
+User language: 	fr
+User locale: 	fr_FR
+
+RDI_BASEROOT: /usr/local/insa/Xilinx.VIVADO/Vivado
+HDI_APPROOT: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+RDI_DATADIR: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/data
+RDI_BINDIR: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin
+
+Vivado preferences file location: /home/oberry/.Xilinx/Vivado/2018.2/vivado.xml
+Vivado preferences directory: /home/oberry/.Xilinx/Vivado/2018.2/
+Vivado layouts directory: /home/oberry/.Xilinx/Vivado/2018.2/layouts
+PlanAhead jar file location: 	/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/lib/classes/planAhead.jar
+Vivado log file location: 	/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/vivado.log
+Vivado journal file location: 	/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-2104-insa-20552
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: /usr/local/insa/Xilinx.VIVADO/Xilinx.lic
+XILINX_DSP: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/ids_lite/ISE
+XILINX_PLANAHEAD: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+XILINX_SDK: /usr/local/insa/Xilinx.VIVADO/SDK/2018.2
+XILINX_VIVADO: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+XILINX_VIVADO_HLS: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+
+
+GUI allocated memory:	154 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 910 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// Tcl Message: start_gui 
+// [GUI Memory]: 54 MB (+53754kb) [00:00:07]
+// [Engine Memory]: 885 MB (+776419kb) [00:00:07]
+selectList(PAResourceQtoS.SyntheticaGettingStartedView_RECENT_PROJECTS, "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr", 0); // q (O, ck)
+// bx (ck):  Open Project : addNotify
+// Opening Vivado Project: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr. Version: Vivado v2018.2 
+// TclEventType: DEBUG_PROBE_SET_CHANGE
+// Tcl Message: open_project /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr 
+// TclEventType: MSGMGR_MOVEMSG
+// TclEventType: FILE_SET_NEW
+// TclEventType: RUN_COMPLETED
+// TclEventType: RUN_CURRENT
+// TclEventType: PROJECT_NEW
+// Tcl Message: open_project /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.xpr 
+// Tcl Message: Scanning sources... Finished scanning sources 
+// Tcl Message: INFO: [IP_Flow 19-234] Refreshing IP repositories INFO: [IP_Flow 19-1704] No user IP repositories specified 
+// HMemoryUtils.trashcanNow. Engine heap size: 942 MB. GUI used memory: 38 MB. Current time: 6/1/22 7:28:33 PM CEST
+// Tcl Message: INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/data/ip'. 
+// TclEventType: PROJECT_NEW
+// [Engine Memory]: 1,021 MB (+96107kb) [00:00:15]
+// [GUI Memory]: 58 MB (+1548kb) [00:00:16]
+// [GUI Memory]: 64 MB (+3541kb) [00:00:16]
+// Project name: project_reg; location: /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg; part: xc7a35tcpg236-1
+// Tcl Message: open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:08 . Memory (MB): peak = 6190.078 ; gain = 130.141 ; free physical = 12679 ; free virtual = 23305 
+dismissDialog("Open Project"); // bx (ck)
+// TclEventType: DG_ANALYSIS_MSG_RESET
+// TclEventType: DG_GRAPH_GENERATED
+selectButton(PAResourceCommand.PACommandNames_TOGGLE_VIEW_NAV, (String) null); // B (E, ck)
+// Run Command: PAResourceCommand.PACommandNames_TOGGLE_VIEW_NAV
+// Tcl Message: update_compile_order -fileset sources_1 
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, CheminDonnees(Behavioral) (CheminDonnees.vhd)]", 1, true); // B (D, ck) - Node
+selectTree(PAResourceEtoH.FileSetPanel_FILE_SET_PANEL_TREE, "[root, Design Sources, CheminDonnees(Behavioral) (CheminDonnees.vhd)]", 1, true, false, false, false, false, true); // B (D, ck) - Double Click - Node
+// [GUI Memory]: 72 MB (+4883kb) [00:00:25]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,125 MB. GUI used memory: 45 MB. Current time: 6/1/22 7:28:48 PM CEST
+// [Engine Memory]: 1,125 MB (+55225kb) [00:00:27]
+// Elapsed time: 12 seconds
+selectCodeEditor("CheminDonnees.vhd", 215, 352); // ce (w, ck)
+// [GUI Memory]: 76 MB (+224kb) [00:01:27]
+// [GUI Memory]: 80 MB (+663kb) [00:10:17]
+// [GUI Memory]: 85 MB (+380kb) [00:15:27]
