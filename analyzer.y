@@ -9,10 +9,10 @@ int yylex();
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token tELSE tELSIF tWHILE tMAIN tVOID tCONST tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
-%token <nb> tNB tIF tID tINT
+%token tMAIN tSOU tADD tMUL tDIV  tPO tPF tAO tAF tPV tVIR
+%token <nb> tNB tIF tID tINT tELSE tVOID tWHILE tPRINTF tEGAL tINF tSUP
 //%token <var> 
-%type <nb> Terme Condition tType Calcul DivMul
+%type <nb> Terme Condition tType Calcul DivMul Else BlockIf BoucleWhile 
 %start Compiler
 %%
 
@@ -60,23 +60,23 @@ DivMul :  DivMul tMUL Terme {int temp = addVarTemp();addInstrToTable("MUL",temp,
 		| DivMul tDIV Terme {int temp = addVarTemp();addInstrToTable("DIV",temp,$1,$3);};
 		| Terme
 
-Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,get_index_symb($1),-1);removeVarTemp();};
-		| tNB {int temp = addVarTemp();addInstrToTable("AFC",temp,$1,-1);};
+Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,get_index_symb($1),-1);$$=temp;};
+		| tNB {$$ = get_index_symb($1);};
 
 
-BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$3,-1,-1);} Body 
-						{int endOfLoop = getLastInstr(),addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop-1,"JMF")}
+BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body {int endOfLoop = getLastInstr(),addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop+1,"JMF");};
 
 
-BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$3,-1,-1);} Body {int endOfIf = getLastInstr(); patchJump($1,endOfIf+1,"JMF");};
-		|  tIF {$1 = getLastInstr();}tPO Condition tPF {addInstrToTable("JMF",$3,-1,-1);} Body Else {int endOfIf = getLastInstr(); patchJump($1,endOfIf+1,"JMF");};
+BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body {int endOfIf = getLastInstr(); patchJump($1,endOfIf-1,"JMF");};
+		|  tIF {$1 = getLastInstr();}tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body Else {int endOfIf = getLastInstr(); patchJump($1,endOfIf+1,"JMF");};
 
-Else : tELSE {$1 = addInstrToTable("JMP",-1,-1,-1);} Body {int endOfElse = getLastInstr();patchJump($1,endOfElse,"JMP");};
+Else : tELSE {addInstrToTable("JMP",-1,-1,-1);} Body {int endOfElse = getLastInstr();patchJump($1,endOfElse,"JMP");};
 
 // Condition assez simple, égalité, supériorité, et infériorité
-Condition : Terme tEGAL tEGAL Terme 
-	|  Terme tINF Terme
-	|  Terme tSUP Terme
+Condition : Terme tEGAL tEGAL Terme {int temp = addVarTemp();addInstrToTable("EQU",temp,$1,$4);$$=temp;};
+	| Terme tINF Terme {int temp = addVarTemp();addInstrToTable("INF",temp,$1,$3);$$=temp;};
+	| Terme tSUP Terme {int temp = addVarTemp();addInstrToTable("SUP",temp,$1,$3);$$=temp;};
+	| Terme {$$=$1;};
 
 
 Print : tPRINTF tPO tID tPF tPV {addInstrToTable("PRI",$3,-1,-1);};

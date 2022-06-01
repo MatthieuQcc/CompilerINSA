@@ -86,5 +86,5 @@ int get_index_symb(char* name){
     } else {
         return index1temp;
     }
-    
+   
 }
