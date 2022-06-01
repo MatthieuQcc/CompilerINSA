@@ -42,16 +42,14 @@ Instruction : Declaration
 
 // Possibilité de declarer plusieurs variables à la suite
 IDs : tID {addSymbol($1);};
-	| tID tVIR tID {addSymbol($1);addsymbol($3)};
+	| tID tVIR tID {addSymbol($1);addSymbol($3);};
 
 
-Declaration : tType IDs tPV  
-			| tINT tID tEGAL tTerme tPV {addSymbol($2);addInstrToTable("AFC", get_index_symb($2),$4,-1);};
+Declaration : tType IDs tPV 
 
 
-Affectation : tID tEGAL Calcul tPV
-			| tID tEGAL tID tPV
-			| tID tEGAL tNB tPV 
+Affectation : tINT tID tEGAL tTerme tPV {addSymbol($2); addInstrToTable("COP", get_index_symb($2),$4,-1);};
+			| tID tEGAL tTerme tPV {addSymbol($2); addInstrToTable("COP", get_index_symb($1),$3,-1);};
 
 
 Calcul : Calcul tADD DivMul
@@ -69,7 +67,7 @@ tTerme :  tID
 BoucleWhile :  tWHILE tPO Condition tPF Body
 
 
-BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF Body {int endOfIf = getLastInstr(); addJM($1,endOfIf)}
+BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF Body {int endOfIf = getLastInstr(); addJM($1,endOfIf);};
 		|  tIF tPO Condition tPF Body Elseifs 
 		|  tIF tPO Condition tPF Body Else 
 
