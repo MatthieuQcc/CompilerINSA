@@ -9,34 +9,36 @@ int yylex();
 void yyerror(char *s);
 %}
 %union { int nb; char var; }
-%token tIF tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
-%token <nb> tNB
+%token tELSE tELSIF tWHILE tMAIN tVOID tCONST tINT tPRINTF tRETURN TVOID tEGAL tSOU tADD tMUL tDIV tINF tSUP tPO tPF tAO tAF tPV tVIR tFL tERROR
+%token <nb> tNB tIF
 %token <var> tID
 %type <nb> tTerme Condition tType
 %start Compiler
 %%
 
 Compiler : tType tMAIN tPO Parametres tPF Body 
-		| tType tMAIN tPO tType tPF tAO Body tAF
 
 tType :	 tINT
 		| tVOID
 
 Parametres : Parametre
 		| 	 Parametre tVIR Parametres
+
 Parametre : tINT tID {addSymbol($2);};
 		|	;
 
 Body : tAO {up_scope();} Instructions tAF {removeSymbols();};
 
-Instructions : Instruction
-			|  Instruction Instructions
+Instructions : Instruction Instructions
+			|  Instruction 
+			| ;
 
 Instruction : Declaration 
 			| Affectation 
 			| BoucleWhile 
-			| BoucleIf 
+			| BlockIf 
 			| Print
+
 
 // Possibilité de declarer plusieurs variables à la suite
 IDs : tID {addSymbol($1);};
@@ -44,7 +46,7 @@ IDs : tID {addSymbol($1);};
 
 
 Declaration : tType IDs tPV  
-			| tType IDs tEGAL Calcul tPV 
+			| tINT tID tEGAL tTerme tPV {addSymbol($2);addInstrToTable("AFC", get_index_symb($2),$4,-1);};
 
 
 Affectation : tID tEGAL Calcul tPV
@@ -56,20 +58,18 @@ Calcul : Calcul tADD DivMul
 		| Calcul tSOU DivMul
 		| DivMul;
 
-
-DivMul : DivMul tMUL tTerme
+DivMul :  DivMul tMUL tTerme
 		| DivMul tDIV tTerme
-		| tTerme;
+		| tTerme
 
-tTerme : tPO Calcul tPF
-		| tID
+tTerme :  tID
 		| tNB
 
 
 BoucleWhile :  tWHILE tPO Condition tPF Body
 
 
-BoucleIf : tIF tPO Condition tPF Body 
+BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF Body {int endOfIf = getLastInstr(); addJM($1,endOfIf)}
 		|  tIF tPO Condition tPF Body Elseifs 
 		|  tIF tPO Condition tPF Body Else 
 

@@ -20,16 +20,16 @@ typedef struct
 void addInstrToTable(char* operation, int r0, int r1, int r2);
 
 //Retourne l'index de la derniere instruction dans le tableau des instructions 
-int get_index_last_instr();
+int getLastInstr();
 
+int patchJump (int oldAdd, int newAdd, char* ope);
 
+//int addVarTemp();
 
-int add_var_tempo();
+//int removeVarTemp();
 
+void printTable (FILE* instructionTable);
 
-int remove_var_tempo();
-
-void print_table();
 
 
 

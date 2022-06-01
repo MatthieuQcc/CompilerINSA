@@ -4,6 +4,7 @@
 
 my_instr tabInstr [MAX_INSTR];
 int tab_index = 0;
+int last_index = 0;
 
 //Instructions : ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI
 
@@ -42,14 +43,29 @@ void addInstrToTable( char* operation, int r0, int r1, int r2){
 
 }
 
-int get_index_last_instr() {
+//index de la derniere instruction
+int getLastInstr() {
     return tab_index;
 }
 
+//Gere les sauts 
+int patchJump (int oldAdd, int newAdd, char* ope) {
+    if (strcmp(ope,"JMP")== 0) {
+        tabInstr[oldAdd].r0 = newAdd;
+    } else if (strcmp(ope,"JMF")==0) {
+        tabInstr[oldAdd].r1 = newAdd;
+    } else {
+        return -1;
+    }
+    return 0;
+}
 
 
-void print_table (FILE* file, my_instr tabinstr) {
-    fprintf(file, "|%s|%d|%d|%d|%d|\n",tabinstr.operation, tabinstr.r0, tabinstr.r1, tabinstr.r2);
+void printTable (FILE* instructionTable) {
+
+    for (int i = 0; i < last_index; i++) {
+        fprintf(instructionTable, "|%s|%d|%d|%d|%d|\n",tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
+    }
 }
 
 
