@@ -29,6 +29,8 @@ int add_var_tempo();
 
 int remove_var_tempo();
 
+void print_table();
+
 
 
 #endif

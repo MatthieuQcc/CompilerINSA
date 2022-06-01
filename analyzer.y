@@ -40,11 +40,11 @@ Instruction : Declaration
 
 // Possibilité de declarer plusieurs variables à la suite
 IDs : tID {addSymbol($1);};
-	| tID tVIR tID {addSymbol($1);};
+	| tID tVIR tID {addSymbol($1);addsymbol($3)};
 
 
 Declaration : tType IDs tPV  
-			| tType IDs tEGAL Calcul tPV
+			| tType IDs tEGAL Calcul tPV 
 
 
 Affectation : tID tEGAL Calcul tPV

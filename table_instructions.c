@@ -48,4 +48,8 @@ int get_index_last_instr() {
 
 
 
+void print_table (FILE* file, my_instr tabinstr) {
+    fprintf(file, "|%s|%d|%d|%d|%d|\n",tabinstr.operation, tabinstr.r0, tabinstr.r1, tabinstr.r2);
+}
+
 
