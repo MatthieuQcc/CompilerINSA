@@ -24,7 +24,7 @@ int getLastInstr();
 
 int patchJump (int oldAdd, int newAdd, char* ope);
 
-//int addVarTemp();
+int addVarTemp();
 
 int removeVarTemp();
 

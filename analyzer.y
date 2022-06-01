@@ -64,16 +64,14 @@ Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,get_index_symb(
 		| tNB {int temp = addVarTemp();addInstrToTable("AFC",temp,$1,-1);};
 
 
-BoucleWhile : tWHILE tPO Condition tPF Body
+BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$3,-1,-1);} Body 
+						{int endOfLoop = getLastInstr(),addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop-1,"JMF")}
 
 
-BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF Body {int endOfIf = getLastInstr(); addJM($1,endOfIf);};
-		|  tIF tPO Condition tPF Body Else 
+BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$3,-1,-1);} Body {int endOfIf = getLastInstr(); patchJump($1,endOfIf+1,"JMF");};
+		|  tIF {$1 = getLastInstr();}tPO Condition tPF {addInstrToTable("JMF",$3,-1,-1);} Body Else {int endOfIf = getLastInstr(); patchJump($1,endOfIf+1,"JMF");};
 
-
-ElsIf : tELSIF tPO Condition tPF Body
-
-Else : tELSE Body
+Else : tELSE {$1 = addInstrToTable("JMP",-1,-1,-1);} Body {int endOfElse = getLastInstr();patchJump($1,endOfElse,"JMP");};
 
 // Condition assez simple, égalité, supériorité, et infériorité
 Condition : Terme tEGAL tEGAL Terme 
@@ -81,7 +79,7 @@ Condition : Terme tEGAL tEGAL Terme
 	|  Terme tSUP Terme
 
 
-Print : tPRINTF tPO tID tPF tPV
+Print : tPRINTF tPO tID tPF tPV {addInstrToTable("PRI",$3,-1,-1);};
 
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
