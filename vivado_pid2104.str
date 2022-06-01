@@ -109,3 +109,6 @@ selectCodeEditor("CheminDonnees.vhd", 215, 352); // ce (w, ck)
 // [GUI Memory]: 76 MB (+224kb) [00:01:27]
 // [GUI Memory]: 80 MB (+663kb) [00:10:17]
 // [GUI Memory]: 85 MB (+380kb) [00:15:27]
+// [GUI Memory]: 89 MB (+435kb) [00:26:22]
+// HMemoryUtils.trashcanNow. Engine heap size: 1,128 MB. GUI used memory: 45 MB. Current time: 6/1/22 7:58:48 PM CEST
+// [GUI Memory]: 94 MB (+403kb) [00:49:38]
