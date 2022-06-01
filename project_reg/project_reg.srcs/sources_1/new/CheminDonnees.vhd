@@ -21,10 +21,11 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -90,26 +91,26 @@ architecture Behavioral of CheminDonnees is
     
     
     --pipeline LI/DI
-    signal LI_DI_A : STD_LOGIC_VECTOR (7 downto 0);
-    signal LI_DI_OP : STD_LOGIC_VECTOR (7 downto 0);
-    signal LI_DI_B : STD_LOGIC_VECTOR (7 downto 0);
-    signal LI_DI_C : STD_LOGIC_VECTOR (7 downto 0);
+    signal LI_DI_A : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal LI_DI_OP : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal LI_DI_B : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal LI_DI_C : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     
     --Pipeline DI/EX        
-    signal DI_EX_A : STD_LOGIC_VECTOR (7 downto 0);
-    signal DI_EX_OP : STD_LOGIC_VECTOR (7 downto 0);
-    signal DI_EX_B : STD_LOGIC_VECTOR (7 downto 0);
-    signal DI_EX_C : STD_LOGIC_VECTOR (7 downto 0);
+    signal DI_EX_A : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal DI_EX_OP : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal DI_EX_B : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal DI_EX_C : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
             
     --Pipeline EX/MEM        
-    signal EX_MEM_A : STD_LOGIC_VECTOR (7 downto 0);
-    signal EX_MEM_OP : STD_LOGIC_VECTOR (7 downto 0);
-    signal EX_MEM_B : STD_LOGIC_VECTOR (7 downto 0);
+    signal EX_MEM_A : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal EX_MEM_OP : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal EX_MEM_B : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
             
     --Pipeline MEM/RE
-    signal MEM_RE_A : STD_LOGIC_VECTOR (7 downto 0);
-    signal MEM_RE_OP : STD_LOGIC_VECTOR (7 downto 0);
-    signal MEM_RE_B : STD_LOGIC_VECTOR (7 downto 0);
+    signal MEM_RE_A : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal MEM_RE_OP : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
+    signal MEM_RE_B : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     
     --Pointeur d'instruction
     signal IP : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
@@ -118,7 +119,7 @@ architecture Behavioral of CheminDonnees is
     signal LC_RE : STD_LOGIC := '0';
     
     --premier etage
-    signal output_mi: STD_LOGIC_VECTOR (31 downto 0);
+    signal output_mi: STD_LOGIC_VECTOR (31 downto 0) := (others => '0');
     
     --Deuxieme etage
     signal MUX_QA : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
@@ -171,6 +172,12 @@ architecture Behavioral of CheminDonnees is
         CLK => CLK_cpu,
         output => MUX_OUT_MD
         );
+    
+    process
+    begin
+         wait until CLK_cpu'event and CLK_cpu='1';
+         IP <= IP + 1;
+    end process;
     
     --Place les données d'instruction dans le pipeline LI/DI
     process
@@ -241,12 +248,14 @@ architecture Behavioral of CheminDonnees is
     process
     begin
     
+    --instruction LOAD
     if MEM_RE_OP = x"7" then 
         MEM_RE_B <= MUX_OUT_MD;
     else
         MEM_RE_B <= EX_MEM_B;
     end if;
     
+    --Instruction STORE
     if MEM_RE_OP = x"8" then 
         MUX_IN_MD <= EX_MEM_A;
     else
@@ -259,10 +268,6 @@ architecture Behavioral of CheminDonnees is
         LC_RE <= '1';
     end if;
     end process;
-    
-    
-    
-    
     
     
 
