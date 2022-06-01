@@ -64,15 +64,12 @@ Terme :  tID {int temp = addVarTemp();addInstrToTable("COP",temp,get_index_symb(
 		| tNB {int temp = addVarTemp();addInstrToTable("AFC",temp,$1,-1);};
 
 
-BoucleWhile :  tWHILE tPO Condition tPF Body
+BoucleWhile : tWHILE tPO Condition tPF Body
 
 
 BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF Body {int endOfIf = getLastInstr(); addJM($1,endOfIf);};
-		|  tIF tPO Condition tPF Body Elseifs 
 		|  tIF tPO Condition tPF Body Else 
 
-Elseifs : ElsIf 
-		| ElsIf Elseifs 
 
 ElsIf : tELSIF tPO Condition tPF Body
 
