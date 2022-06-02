@@ -1,21 +1,3 @@
-Non-terminaux inutiles dans la grammaire
-
-    Else
-    $@3
-
-
-Terminaux inutilisés dans la grammaire
-
-    tELSE
-
-
-Règles inutiles dans la grammaire
-
-   40 $@3: %empty
-
-   41 Else: tELSE $@3 Body
-
-
 État 19 conflits: 1 décalage/réduction
 
 
@@ -68,20 +50,23 @@ Grammaire
 
    30 $@2: %empty
 
-   31 BlockIf: tIF tPO Condition $@2 tPF Body
+   31 BlockIf: tIF tPO Condition $@2 tPF Body Else
 
-   32 $@4: %empty
+   32 $@3: %empty
 
-   33 $@5: %empty
+   33 Else: tELSE $@3 Body
+   34     | %empty
 
-   34 BoucleWhile: tWHILE $@4 tPO Condition tPF $@5 Body
+   35 $@4: %empty
 
-   35 Condition: Calcul tEGAL tEGAL Calcul
-   36          | Calcul tINF Calcul
-   37          | Calcul tSUP Calcul
-   38          | Calcul
+   36 BoucleWhile: tWHILE tPO Condition tPF $@4 Body
 
-   39 Print: tPRINTF tPO Calcul tPF tPV
+   37 Condition: Calcul tEGAL tEGAL Calcul
+   38          | Calcul tINF Calcul
+   39          | Calcul tSUP Calcul
+   40          | Calcul
+
+   41 Print: tPRINTF tPO Calcul tPF tPV
 
 
 Terminaux, suivis des règles où ils apparaissent
@@ -93,22 +78,22 @@ Terminaux, suivis des règles où ils apparaissent
     tADD (260) 22
     tMUL (261) 25
     tDIV (262) 26
-    tPO (263) 1 31 34 39
-    tPF (264) 1 31 34 39
+    tPO (263) 1 31 36 41
+    tPF (264) 1 31 36 41
     tAO (265) 9
     tAF (266) 9
-    tPV (267) 19 20 21 39
+    tPV (267) 19 20 21 41
     tVIR (268) 5 18
     tNB <nb> (269) 29
     tIF <nb> (270) 31
     tINT <nb> (271) 2 6 20
-    tELSE <nb> (272)
+    tELSE <nb> (272) 33
     tVOID <nb> (273) 3
-    tWHILE <nb> (274) 34
-    tPRINTF <nb> (275) 39
-    tEGAL <nb> (276) 20 21 35
-    tINF <nb> (277) 36
-    tSUP <nb> (278) 37
+    tWHILE <nb> (274) 36
+    tPRINTF <nb> (275) 41
+    tEGAL <nb> (276) 20 21 37
+    tINF <nb> (277) 38
+    tSUP <nb> (278) 39
     tID <var> (279) 6 17 18 20 21 28
 
 
@@ -130,7 +115,7 @@ Non-terminaux, suivis des règles où ils apparaissent
         à droite: 4 5
     Body (30)
         à gauche: 9
-        à droite: 1 31 34
+        à droite: 1 31 33 36
     $@1 (31)
         à gauche: 8
         à droite: 9
@@ -151,7 +136,7 @@ Non-terminaux, suivis des règles où ils apparaissent
         à droite: 13
     Calcul <nb> (37)
         à gauche: 22 23 24
-        à droite: 20 21 22 23 35 36 37 38 39
+        à droite: 20 21 22 23 37 38 39 40 41
     DivMul <nb> (38)
         à gauche: 25 26 27
         à droite: 22 23 24 25 26
@@ -164,20 +149,23 @@ Non-terminaux, suivis des règles où ils apparaissent
     $@2 (41)
         à gauche: 30
         à droite: 31
-    BoucleWhile <nb> (42)
-        à gauche: 34
-        à droite: 14
-    $@4 (43)
+    Else <nb> (42)
+        à gauche: 33 34
+        à droite: 31
+    $@3 (43)
         à gauche: 32
-        à droite: 34
-    $@5 (44)
-        à gauche: 33
-        à droite: 34
-    Condition <nb> (45)
-        à gauche: 35 36 37 38
-        à droite: 31 34
-    Print (46)
-        à gauche: 39
+        à droite: 33
+    BoucleWhile <nb> (44)
+        à gauche: 36
+        à droite: 14
+    $@4 (45)
+        à gauche: 35
+        à droite: 36
+    Condition <nb> (46)
+        à gauche: 37 38 39 40
+        à droite: 31 36
+    Print (47)
+        à gauche: 41
         à droite: 16
 
 
@@ -346,7 +334,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 18
 
-   31 BlockIf: tIF . tPO Condition $@2 tPF Body
+   31 BlockIf: tIF . tPO Condition $@2 tPF Body Else
 
     tPO  décalage et aller à l'état 31
 
@@ -363,16 +351,14 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 20
 
-   34 BoucleWhile: tWHILE . $@4 tPO Condition tPF $@5 Body
+   36 BoucleWhile: tWHILE . tPO Condition tPF $@4 Body
 
-    $défaut  réduction par utilisation de la règle 32 ($@4)
-
-    $@4  aller à l'état 33
+    tPO  décalage et aller à l'état 33
 
 
 État 21
 
-   39 Print: tPRINTF . tPO Calcul tPF tPV
+   41 Print: tPRINTF . tPO Calcul tPF tPV
 
     tPO  décalage et aller à l'état 34
 
@@ -460,7 +446,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 31
 
-   31 BlockIf: tIF tPO . Condition $@2 tPF Body
+   31 BlockIf: tIF tPO . Condition $@2 tPF Body Else
 
     tNB  décalage et aller à l'état 40
     tID  décalage et aller à l'état 41
@@ -480,14 +466,20 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 33
 
-   34 BoucleWhile: tWHILE $@4 . tPO Condition tPF $@5 Body
+   36 BoucleWhile: tWHILE tPO . Condition tPF $@4 Body
 
-    tPO  décalage et aller à l'état 47
+    tNB  décalage et aller à l'état 40
+    tID  décalage et aller à l'état 41
+
+    Calcul     aller à l'état 42
+    DivMul     aller à l'état 43
+    Terme      aller à l'état 44
+    Condition  aller à l'état 47
 
 
 État 34
 
-   39 Print: tPRINTF tPO . Calcul tPF tPV
+   41 Print: tPRINTF tPO . Calcul tPF tPV
 
     tNB  décalage et aller à l'état 40
     tID  décalage et aller à l'état 41
@@ -558,10 +550,10 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
-   35 Condition: Calcul . tEGAL tEGAL Calcul
-   36          | Calcul . tINF Calcul
-   37          | Calcul . tSUP Calcul
-   38          | Calcul .
+   37 Condition: Calcul . tEGAL tEGAL Calcul
+   38          | Calcul . tINF Calcul
+   39          | Calcul . tSUP Calcul
+   40          | Calcul .
 
     tSOU   décalage et aller à l'état 52
     tADD   décalage et aller à l'état 53
@@ -569,7 +561,7 @@ Non-terminaux, suivis des règles où ils apparaissent
     tINF   décalage et aller à l'état 55
     tSUP   décalage et aller à l'état 56
 
-    $défaut  réduction par utilisation de la règle 38 (Condition)
+    $défaut  réduction par utilisation de la règle 40 (Condition)
 
 
 État 43
@@ -593,7 +585,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 45
 
-   31 BlockIf: tIF tPO Condition . $@2 tPF Body
+   31 BlockIf: tIF tPO Condition . $@2 tPF Body Else
 
     $défaut  réduction par utilisation de la règle 30 ($@2)
 
@@ -614,22 +606,16 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 47
 
-   34 BoucleWhile: tWHILE $@4 tPO . Condition tPF $@5 Body
+   36 BoucleWhile: tWHILE tPO Condition . tPF $@4 Body
 
-    tNB  décalage et aller à l'état 40
-    tID  décalage et aller à l'état 41
-
-    Calcul     aller à l'état 42
-    DivMul     aller à l'état 43
-    Terme      aller à l'état 44
-    Condition  aller à l'état 61
+    tPF  décalage et aller à l'état 61
 
 
 État 48
 
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
-   39 Print: tPRINTF tPO Calcul . tPF tPV
+   41 Print: tPRINTF tPO Calcul . tPF tPV
 
     tSOU  décalage et aller à l'état 52
     tADD  décalage et aller à l'état 53
@@ -687,14 +673,14 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 54
 
-   35 Condition: Calcul tEGAL . tEGAL Calcul
+   37 Condition: Calcul tEGAL . tEGAL Calcul
 
     tEGAL  décalage et aller à l'état 67
 
 
 État 55
 
-   36 Condition: Calcul tINF . Calcul
+   38 Condition: Calcul tINF . Calcul
 
     tNB  décalage et aller à l'état 40
     tID  décalage et aller à l'état 41
@@ -706,7 +692,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 56
 
-   37 Condition: Calcul tSUP . Calcul
+   39 Condition: Calcul tSUP . Calcul
 
     tNB  décalage et aller à l'état 40
     tID  décalage et aller à l'état 41
@@ -738,7 +724,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 59
 
-   31 BlockIf: tIF tPO Condition $@2 . tPF Body
+   31 BlockIf: tIF tPO Condition $@2 . tPF Body Else
 
     tPF  décalage et aller à l'état 72
 
@@ -756,14 +742,16 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 61
 
-   34 BoucleWhile: tWHILE $@4 tPO Condition . tPF $@5 Body
+   36 BoucleWhile: tWHILE tPO Condition tPF . $@4 Body
 
-    tPF  décalage et aller à l'état 74
+    $défaut  réduction par utilisation de la règle 35 ($@4)
+
+    $@4  aller à l'état 74
 
 
 État 62
 
-   39 Print: tPRINTF tPO Calcul tPF . tPV
+   41 Print: tPRINTF tPO Calcul tPF . tPV
 
     tPV  décalage et aller à l'état 75
 
@@ -808,7 +796,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 67
 
-   35 Condition: Calcul tEGAL tEGAL . Calcul
+   37 Condition: Calcul tEGAL tEGAL . Calcul
 
     tNB  décalage et aller à l'état 40
     tID  décalage et aller à l'état 41
@@ -822,24 +810,24 @@ Non-terminaux, suivis des règles où ils apparaissent
 
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
-   36 Condition: Calcul tINF Calcul .
+   38 Condition: Calcul tINF Calcul .
 
     tSOU  décalage et aller à l'état 52
     tADD  décalage et aller à l'état 53
 
-    $défaut  réduction par utilisation de la règle 36 (Condition)
+    $défaut  réduction par utilisation de la règle 38 (Condition)
 
 
 État 69
 
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
-   37 Condition: Calcul tSUP Calcul .
+   39 Condition: Calcul tSUP Calcul .
 
     tSOU  décalage et aller à l'état 52
     tADD  décalage et aller à l'état 53
 
-    $défaut  réduction par utilisation de la règle 37 (Condition)
+    $défaut  réduction par utilisation de la règle 39 (Condition)
 
 
 État 70
@@ -858,7 +846,7 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 72
 
-   31 BlockIf: tIF tPO Condition $@2 tPF . Body
+   31 BlockIf: tIF tPO Condition $@2 tPF . Body Else
 
     tAO  décalage et aller à l'état 14
 
@@ -874,50 +862,77 @@ Non-terminaux, suivis des règles où ils apparaissent
 
 État 74
 
-   34 BoucleWhile: tWHILE $@4 tPO Condition tPF . $@5 Body
+   36 BoucleWhile: tWHILE tPO Condition tPF $@4 . Body
 
-    $défaut  réduction par utilisation de la règle 33 ($@5)
+    tAO  décalage et aller à l'état 14
 
-    $@5  aller à l'état 78
+    Body  aller à l'état 78
 
 
 État 75
 
-   39 Print: tPRINTF tPO Calcul tPF tPV .
+   41 Print: tPRINTF tPO Calcul tPF tPV .
 
-    $défaut  réduction par utilisation de la règle 39 (Print)
+    $défaut  réduction par utilisation de la règle 41 (Print)
 
 
 État 76
 
    22 Calcul: Calcul . tADD DivMul
    23       | Calcul . tSOU DivMul
-   35 Condition: Calcul tEGAL tEGAL Calcul .
+   37 Condition: Calcul tEGAL tEGAL Calcul .
 
     tSOU  décalage et aller à l'état 52
     tADD  décalage et aller à l'état 53
 
-    $défaut  réduction par utilisation de la règle 35 (Condition)
+    $défaut  réduction par utilisation de la règle 37 (Condition)
 
 
 État 77
 
-   31 BlockIf: tIF tPO Condition $@2 tPF Body .
+   31 BlockIf: tIF tPO Condition $@2 tPF Body . Else
 
-    $défaut  réduction par utilisation de la règle 31 (BlockIf)
+    tELSE  décalage et aller à l'état 79
+
+    $défaut  réduction par utilisation de la règle 34 (Else)
+
+    Else  aller à l'état 80
 
 
 État 78
 
-   34 BoucleWhile: tWHILE $@4 tPO Condition tPF $@5 . Body
+   36 BoucleWhile: tWHILE tPO Condition tPF $@4 Body .
 
-    tAO  décalage et aller à l'état 14
-
-    Body  aller à l'état 79
+    $défaut  réduction par utilisation de la règle 36 (BoucleWhile)
 
 
 État 79
 
-   34 BoucleWhile: tWHILE $@4 tPO Condition tPF $@5 Body .
+   33 Else: tELSE . $@3 Body
 
-    $défaut  réduction par utilisation de la règle 34 (BoucleWhile)
+    $défaut  réduction par utilisation de la règle 32 ($@3)
+
+    $@3  aller à l'état 81
+
+
+État 80
+
+   31 BlockIf: tIF tPO Condition $@2 tPF Body Else .
+
+    $défaut  réduction par utilisation de la règle 31 (BlockIf)
+
+
+État 81
+
+   33 Else: tELSE $@3 . Body
+
+    tAO  décalage et aller à l'état 14
+
+    Body  aller à l'état 82
+
+
+État 82
+
+   33 Else: tELSE $@3 Body .
+
+    $défaut  réduction par utilisation de la règle 33 (Else)

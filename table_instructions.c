@@ -95,10 +95,10 @@ void interpreter_asm(){
         r0 = instruction_courrante.r0;
         r1 = instruction_courrante.r1;
         r2 = instruction_courrante.r2;
-        if(strcmp(operation, "COP") == 0){
+        if(strcmp(operation, "AFC") == 0){
             registre[r0] = r1;
         }
-        if(strcmp(operation, "AFC") == 0){
+        if(strcmp(operation, "COP") == 0){
             registre[r0] = registre[r1];
         }
         if(strcmp(operation, "ADD") == 0){
@@ -121,7 +121,10 @@ void interpreter_asm(){
                 // -2 car problème indice et incrémentation
                 index_courrant = r1-2;
             }
-        }   
+        }  
+        if(strcmp(operation, "JMP") == 0){
+            index_courrant = r0-2;
+        }  
         if(strcmp(operation, "SUP") == 0){
             registre[r0] = (registre[r1]>registre[r2]);
         }

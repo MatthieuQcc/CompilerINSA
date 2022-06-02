@@ -67,13 +67,14 @@ Terme :  tID {$$ = get_index_symb($1);}
 
 
 // On donne l'adresse de l'instruction JMF à tIF ($1)
-BlockIf : tIF tPO Condition {$1 = addInstrToTable("JMF", $3, -1, -1);} tPF Body {patchJump($1, getLastInstr()+1, "JMF");};
+BlockIf : tIF tPO Condition {$1 = addInstrToTable("JMF", $3, -1, -1);} tPF Body Else {patchJump($1, $7+2, "JMF");};
+
+Else : tELSE {$1 = addInstrToTable("JMP", -1, -1, -1);} Body {patchJump($1, getLastInstr()+1, "JMP"); $$=$1;}
+		| {$$=getLastInstr()-1;};
 
 
-Else : tELSE {addInstrToTable("JMP",-1,-1,-1);} Body {int endOfElse = getLastInstr();patchJump($1,endOfElse,"JMP");};
-
-BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body 
-		{int endOfLoop = getLastInstr();addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop+1,"JMF");};
+BoucleWhile : tWHILE tPO Condition tPF {$1 = addInstrToTable("JMF", $3, -1, -1);} Body 
+			{ int newJump = addInstrToTable("JMP", $1-1, -1, -1); patchJump($1, newJump+1, "JMF");};
 
 
 // Condition assez simple, égalité, supériorité, et infériorité
