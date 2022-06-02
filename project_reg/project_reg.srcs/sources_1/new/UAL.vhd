@@ -57,16 +57,16 @@ begin
     A_aux <= x"00" & A;
     B_aux <= x"00" & B;
          
-    S_aux <= A_aux + B_aux when Ctrl_Alu=x"00" else 
-             A_aux - B_aux  when Ctrl_Alu=x"01" else 
-             (A * B)  when Ctrl_Alu=x"10" ;
+    S_aux <= A_aux + B_aux when Ctrl_Alu="00" else 
+             A_aux - B_aux  when Ctrl_Alu="01" else 
+             (A * B)  when Ctrl_Alu="10" ;
             
     
     
-    N <= '1' when Ctrl_Alu = x"01" and A<B else '0';--peut etre <0 que dans la cas d'une soustraction ou A<B
-    O <= '1' when Ctrl_Alu = x"10" and S_aux > x"00ff" else '0';--dans le cas d'une multiplication, résultat dépasse 8bits
-    Z <= '1' when S_aux = x"00" else '0' ;
-    C <= '1' when Ctrl_Alu = x"00" and S_aux > x"00ff" else '0'; --dans le cas d'une addition, résultat dépasse 8bits
+    N <= '1' when Ctrl_Alu = "01" and A<B else '0';--peut etre <0 que dans la cas d'une soustraction où A<B
+    O <= '1' when Ctrl_Alu = "10" and S_aux > x"00ff" else '0';--dans le cas d'une multiplication, résultat dépasse 8bits
+    Z <= '1' when S_aux = "00" else '0' ;
+    C <= '1' when Ctrl_Alu = "00" and S_aux > x"00ff" else '0'; --dans le cas d'une addition, résultat dépasse 8bits
     
     S <= S_aux(7 downto 0); --garde que les 8 premiers bits de S_aux
 

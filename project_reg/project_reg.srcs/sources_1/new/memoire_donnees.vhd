@@ -42,10 +42,13 @@ entity memoire_donnees is
 end memoire_donnees;
 
 architecture Behavioral of memoire_donnees is
+
     type bancMem is array (0 to 15) of STD_LOGIC_VECTOR (7 downto 0); 
     --Initialisation du tableau
     signal memoire : bancMem:=(others => (others => '0'));
+    
 begin
+
     process 
     begin 
     
@@ -56,13 +59,10 @@ begin
         if (RST = '0') then
             -- initialise le contenu du banc à 0x00
             memoire(0 to 15) <= (others => X"00");
-        end if;
-        
-        --Lecture
-        if (RW = '1') then 
-            --Lecture  
-            output <= memoire(to_integer(unsigned(add))) ;
-                    
+        elsif (RW = '1' ) then 
+            --Lecture
+            output <= memoire(to_integer(unsigned(add)));
+          
         elsif (RW = '0') then         
             --Ecriture
             memoire(to_integer(unsigned(add))) <= input;

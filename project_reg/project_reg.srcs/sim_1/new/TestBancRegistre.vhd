@@ -54,7 +54,7 @@ end COMPONENT;
     signal t_add_A : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
     signal t_add_B : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
     signal t_add_W : STD_LOGIC_VECTOR(3 downto 0) := (others => '0');
-    signal t_W : STD_LOGIC := '0';
+    signal t_W : STD_LOGIC := '1';
     signal t_DATA : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
     signal t_RST : STD_LOGIC := '1';
     signal t_CLK : STD_LOGIC := '0';
@@ -90,8 +90,8 @@ end process;
     
 t_add_A <= X"2";
 t_add_B <= X"8";
-t_add_W <= X"2";
-t_DATA <= X"4F";
+t_add_W <= X"7";
+t_DATA <= X"44";
 
 
 end Behavioral;

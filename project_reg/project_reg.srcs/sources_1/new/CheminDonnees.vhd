@@ -34,7 +34,6 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity CheminDonnees is
     Port(   
-        
         --signal d'horloge
         CLK_cpu : in STD_LOGIC;
         --signal de reset
@@ -145,8 +144,8 @@ architecture Behavioral of CheminDonnees is
     
     --Cinquieme etage
     banc : banc_registre port Map (
-        add_A => LI_DI_B,
-        add_B => LI_DI_C,
+        add_A => LI_DI_B(3 downto 0),
+        add_B => LI_DI_C(3 downto 0),
         add_W => MEM_RE_A(3 downto 0),
         W => LC_RE,
         DATA => MEM_RE_B,
@@ -216,9 +215,9 @@ architecture Behavioral of CheminDonnees is
     EX_MEM_A <= DI_EX_A;
     EX_MEM_OP <= DI_EX_OP;
     if DI_EX_OP < x"4" or DI_EX_OP > x"0" then
-        LC_EX <= DI_EX_OP;
+        LC_EX <= DI_EX_OP(1 downto 0);
     else 
-        LC_EX <= x"0";
+        LC_EX <= "00";
     end if;
     end process;
     

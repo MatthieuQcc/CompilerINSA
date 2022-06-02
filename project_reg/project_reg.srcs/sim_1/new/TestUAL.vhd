@@ -43,7 +43,7 @@ signal t_C : STD_LOGIC := '0';
 
 begin
 
-    Label_uut: UAL PORT MAP (
+    alu : UAL PORT MAP (
     A => t_A,
     B => t_B,
     S => t_S,
@@ -55,8 +55,8 @@ begin
 
 );
 
-t_A <= "00000110"; --15
-t_B <= "00000011"; --21
+t_A <= "00000110";  
+t_B <= "00000011"; 
 t_Alu <= "10";
 
 end Behavioral;

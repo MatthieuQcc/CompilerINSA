@@ -61,7 +61,7 @@ end COMPONENT;
 
 begin
 
-Label_uut:  memoire_donnees PORT MAP(
+mem_donnees:  memoire_donnees PORT MAP(
     add => t_add,
     input => t_input,
     RW => t_RW,
