@@ -43,7 +43,7 @@ signal t_C : STD_LOGIC := '0';
 
 begin
 
-    Label_uut: UAL PORT MAP (
+    alu : UAL PORT MAP (
     A => t_A,
     B => t_B,
     S => t_S,

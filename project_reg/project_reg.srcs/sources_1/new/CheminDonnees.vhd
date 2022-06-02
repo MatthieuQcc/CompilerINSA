@@ -34,7 +34,6 @@ use IEEE.NUMERIC_STD.ALL;
 
 entity CheminDonnees is
     Port(   
-        
         --signal d'horloge
         CLK_cpu : in STD_LOGIC;
         --signal de reset

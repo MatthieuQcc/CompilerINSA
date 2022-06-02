@@ -63,7 +63,7 @@ begin
             
     
     
-    N <= '1' when Ctrl_Alu = x"01" and A<B else '0';--peut etre <0 que dans la cas d'une soustraction ou A<B
+    N <= '1' when Ctrl_Alu = x"01" and A<B else '0';--peut etre <0 que dans la cas d'une soustraction où A<B
     O <= '1' when Ctrl_Alu = x"10" and S_aux > x"00ff" else '0';--dans le cas d'une multiplication, résultat dépasse 8bits
     Z <= '1' when S_aux = x"00" else '0' ;
     C <= '1' when Ctrl_Alu = x"00" and S_aux > x"00ff" else '0'; --dans le cas d'une addition, résultat dépasse 8bits

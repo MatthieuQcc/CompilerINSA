@@ -2,7 +2,8 @@
 2018.2
 Jun 14 2018
 20:07:38
-/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/TestUAL.vhd,1653470893,vhdl,,,,testual,,,,,,,,
+/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/TestBancRegistre.vhd,1652433807,vhdl,,,,testbancregistre,,,,,,,,
+/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/TestMemoireInstru.vhd,1654162030,vhdl,,,,testmemoireinstru,,,,,,,,
 /home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd,1653471109,vhdl,,,,ual,,,,,,,,
-/home/oberry/banc_registres/banc_registres.srcs/sim_1/new/TestBancRegistre.vhd,1652433807,vhdl,,,,testbancregistre,,,,,,,,
-/home/oberry/banc_registres/banc_registres.srcs/sources_1/new/banc_registre.vhd,1652435356,vhdl,,,,banc_registre,,,,,,,,
+/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/banc_registre.vhd,1652435356,vhdl,,,,banc_registre,,,,,,,,
+/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd,1654162324,vhdl,,,,memoire_instructions,,,,,,,,
