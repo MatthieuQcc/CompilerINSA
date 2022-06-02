@@ -1437,7 +1437,7 @@ yyreduce:
 
   case 22:
 #line 53 "analyzer.y"
-                                               {addInstrToTable("COP", get_index_symb((yyvsp[-3].var)), (yyvsp[-1].nb), -1);}
+                                               {addInstrToTable("AFC", get_index_symb((yyvsp[-3].var)), (yyvsp[-1].nb), -1);}
 #line 1442 "y.tab.c"
     break;
 
@@ -1515,7 +1515,7 @@ yyreduce:
 
   case 37:
 #line 77 "analyzer.y"
-                        { int newJump = addInstrToTable("JMP", (yyvsp[-5].nb)-1, -1, -1); patchJump((yyvsp[-5].nb), newJump+1, "JMF");}
+                        { int newJump = addInstrToTable("JMP", (yyvsp[-5].nb), -1, -1); patchJump((yyvsp[-5].nb), newJump+2, "JMF");}
 #line 1520 "y.tab.c"
     break;
 

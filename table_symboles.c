@@ -1,5 +1,5 @@
 #include "table_symboles.h"
-#define TAILLE_MAX 1000
+#define TAILLE_MAX 2000
 
 
 // On crée la table des symboles ayant pour taille TAILLE_MAX

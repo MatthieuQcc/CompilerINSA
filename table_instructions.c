@@ -95,10 +95,10 @@ void interpreter_asm(){
         r0 = instruction_courrante.r0;
         r1 = instruction_courrante.r1;
         r2 = instruction_courrante.r2;
-        if(strcmp(operation, "AFC") == 0){
+        if(strcmp(operation, "COP") == 0){
             registre[r0] = r1;
         }
-        if(strcmp(operation, "COP") == 0){
+        if(strcmp(operation, "AFC") == 0){
             registre[r0] = registre[r1];
         }
         if(strcmp(operation, "ADD") == 0){

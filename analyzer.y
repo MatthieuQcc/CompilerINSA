@@ -50,7 +50,7 @@ Declaration : tType IDs tPV ;
 
 
 Affectation : tINT tID tEGAL Calcul tPV {addSymbol($2); addInstrToTable("AFC", get_index_symb($2), $4,-1);}
-			| tID tEGAL Calcul tPV {addInstrToTable("COP", get_index_symb($1), $3, -1);};
+			| tID tEGAL Calcul tPV {addInstrToTable("AFC", get_index_symb($1), $3, -1);};
 
 
 Calcul : Calcul tADD DivMul {int temp = addressVarTemp(); addInstrToTable("ADD", temp, $1, $3); $$=temp;}
@@ -74,7 +74,7 @@ Else : tELSE {$1 = addInstrToTable("JMP", -1, -1, -1);} Body {patchJump($1, getL
 
 
 BoucleWhile : tWHILE tPO Condition tPF {$1 = addInstrToTable("JMF", $3, -1, -1);} Body 
-			{ int newJump = addInstrToTable("JMP", $1-1, -1, -1); patchJump($1, newJump+1, "JMF");};
+			{ int newJump = addInstrToTable("JMP", $1, -1, -1); patchJump($1, newJump+2, "JMF");};
 
 
 // Condition assez simple, égalité, supériorité, et infériorité
