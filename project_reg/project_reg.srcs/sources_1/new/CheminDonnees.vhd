@@ -33,12 +33,6 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity CheminDonnees is
-    Port(   
-        --signal d'horloge
-        CLK_cpu : in STD_LOGIC;
-        --signal de reset
-        rst_cpu : in STD_LOGIC       
-        );
 
 end CheminDonnees;
 
@@ -133,7 +127,23 @@ architecture Behavioral of CheminDonnees is
     signal LC_MEM : STD_LOGIC := '0';
     signal MUX_IN_MD : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     
+    signal CLK_cpu : STD_LOGIC := '0'; 
+    signal rst_cpu : STD_LOGIC := '1';
+    signal output_cpu : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
+    
+    -- Clock period definition
+    constant Clock_period: time := 100 ns;
+    
     begin
+    
+        --Clock process definition 
+        Clock_process : process 
+        
+        begin 
+            CLK_cpu <= not(CLK_cpu);
+            wait for Clock_period/2;
+        end process;
+    
     
     --Premier etage 
     mem_instru : memoire_instructions port Map (
@@ -141,88 +151,92 @@ architecture Behavioral of CheminDonnees is
         CLK => CLK_cpu,
         output => output_mi
     );
-    
     --Cinquieme etage
-    banc : banc_registre port Map (
-        add_A => LI_DI_B(3 downto 0),
-        add_B => LI_DI_C(3 downto 0),
-        add_W => MEM_RE_A(3 downto 0),
-        W => LC_RE,
-        DATA => MEM_RE_B,
-        RST => rst_cpu,
-        CLK => CLK_cpu,
-        QA => MUX_QA,
-        QB => QB_banc
-        );
+           banc : banc_registre port Map (
+               add_A => LI_DI_B(3 downto 0),
+               add_B => LI_DI_C(3 downto 0),
+               add_W => MEM_RE_A(3 downto 0),
+               W => LC_RE,
+               DATA => MEM_RE_B,
+               RST => rst_cpu,
+               CLK => CLK_cpu,
+               QA => MUX_QA,
+               QB => QB_banc
+               );
+               
+           --Deuxieme etage    
+           alu : UAL port MAP (
+               A => DI_EX_B, 
+               B => DI_EX_C,
+               Ctrl_Alu => LC_EX,
+               S => MUX_S
+               );
+           
+           mem_donnees : memoire_donnees port Map (
+               add => EX_MEM_B,
+               input => MUX_IN_MD,
+               RW => LC_MEM,
+               RST => RST_cpu,
+               CLK => CLK_cpu,
+               output => MUX_OUT_MD
+               );
         
-    --Deuxieme etage    
-    alu : UAL port MAP (
-        A => DI_EX_B, 
-        B => DI_EX_C,
-        Ctrl_Alu => LC_EX,
-        S => MUX_S
-        );
-    
-    mem_donnees : memoire_donnees port Map (
-        add => EX_MEM_B,
-        input => MUX_IN_MD,
-        RW => LC_MEM,
-        RST => RST_cpu,
-        CLK => CLK_cpu,
-        output => MUX_OUT_MD
-        );
+   
     
     process
     begin
          wait until CLK_cpu'event and CLK_cpu='1';
-         IP <= IP + 1;
-    end process;
+   -- end process;
     
     --Place les données d'instruction dans le pipeline LI/DI
-    process
-    begin
+    --process
+    --begin
     --Premier etage 
     --Format d'instruction : |OP|A|B|C|
     LI_DI_A <= output_mi(23 downto 16);
     LI_DI_OP <= output_mi(31 downto 24);
     LI_DI_B <= output_mi(15 downto 8);
     LI_DI_C <= output_mi(7 downto 0);
-    end process;
+    --end process;
+    
+    output_cpu <= MEM_RE_A;
+    IP <= IP + 1;
     
    --propage les données dans le pipeline DI/EX
-   process
-   begin
+   --process
+   --begin
     DI_EX_A <= LI_DI_A;
     DI_EX_OP <= LI_DI_OP;
-    end process;
+    --end process;
     
     --gere l'instruction AFC
-    process
-    begin
-    if LI_DI_OP = x"5" then 
-    --Si instruction AFC
+    --process
+    --begin
+    if LI_DI_OP = x"6" or LI_DI_OP = x"7" then 
+    --Si instruction AFC ou LOAD
         DI_EX_B <= LI_DI_B ;
     else 
     --Pour toutes les autres instructions
         DI_EX_B  <= MUX_QA; --permet de coder COP
     end if;
-    end process;
+    DI_EX_C <= QB_banc;
+    --end process;
     
     
     --propage les données dans le pipeline EX/MEM
-    process
-    begin
+    --process
+    --begin
     EX_MEM_A <= DI_EX_A;
     EX_MEM_OP <= DI_EX_OP;
+    
     if DI_EX_OP < x"4" or DI_EX_OP > x"0" then
         LC_EX <= DI_EX_OP(1 downto 0);
     else 
         LC_EX <= "00";
     end if;
-    end process;
     
-    process
-    begin
+   -- process
+    --begin
     --Cas des instructions ADD,MUL,SOU
     if (EX_MEM_OP < x"4") or (EX_MEM_OP > x"0") then 
         EX_MEM_B <= MUX_S;
@@ -230,11 +244,12 @@ architecture Behavioral of CheminDonnees is
     --Pour le reste des instructions 
         EX_MEM_B <= DI_EX_B;    
     end if;
-    end process;
+   -- end process;
     
     --propage les données dans le pipeline MEM/RE
-    process
-    begin
+   -- process
+   -- begin
+   
         MEM_RE_A <= EX_MEM_A;
         MEM_RE_OP <= EX_MEM_OP; 
         if EX_MEM_OP = x"8" then 
@@ -242,10 +257,11 @@ architecture Behavioral of CheminDonnees is
         else 
             LC_MEM <= '1';
         end if;
-    end process;
+    --end process;
     
-    process
-    begin
+    
+    --process
+    --begin
     
     --instruction LOAD
     if MEM_RE_OP = x"7" then 
@@ -253,7 +269,10 @@ architecture Behavioral of CheminDonnees is
     else
         MEM_RE_B <= EX_MEM_B;
     end if;
+    --end process;
     
+    --process
+    --begin
     --Instruction STORE
     if MEM_RE_OP = x"8" then 
         MUX_IN_MD <= EX_MEM_A;
@@ -266,8 +285,8 @@ architecture Behavioral of CheminDonnees is
     else 
         LC_RE <= '1';
     end if;
+    
     end process;
-    
-    
+     
 
 end Behavioral;

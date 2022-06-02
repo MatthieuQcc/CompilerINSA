@@ -49,9 +49,9 @@ end COMPONENT;
 --Inputs
     signal t_add : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
     signal t_input : STD_LOGIC_VECTOR (7 downto 0):= (others => '0');
-    signal t_RW : STD_LOGIC;
+    signal t_RW : STD_LOGIC ;
     signal t_RST : STD_LOGIC;
-    signal t_CLK : STD_LOGIC;
+    signal t_CLK : STD_LOGIC := '0';
     
 --Outputs
     signal t_output : STD_LOGIC_VECTOR (7 downto 0):= (others => '0');
@@ -76,5 +76,10 @@ begin
     t_CLK <= not(t_CLK);
     wait for Clock_period/2;
 end process; 
+
+t_add <= "00000000" ;
+t_input <= "11111111";
+t_RW <= '0' after 10ns, '1' after 100 ns;
+t_RST <= '1';
 
 end Behavioral;

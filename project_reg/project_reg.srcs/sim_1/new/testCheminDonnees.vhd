@@ -42,13 +42,16 @@ architecture Behavioral of testCheminDonnees is
     --signal d'horloge
         CLK_cpu : in STD_LOGIC;
         --signal de reset
-        rst_cpu : in STD_LOGIC    
+        rst_cpu : in STD_LOGIC;    
+        --output
+        output_cpu : out STD_LOGIC_VECTOR (7 downto 0)
         );
     end component;
         
 
     signal t_CLK : STD_LOGIC := '0';
     signal t_rst : STD_LOGIC := '0';
+    signal t_output : STD_LOGIC_VECTOR (7 downto 0) := (others => '0');
  
  --Clock period definition   
  constant Clock_period : time := 10ns;
@@ -56,10 +59,11 @@ architecture Behavioral of testCheminDonnees is
 begin
     chemin : CheminDonnees PORT MAP (
         CLK_cpu => t_CLK,
-        rst_cpu => t_rst
+        rst_cpu => t_rst,
+        output_cpu => t_output
         );
    
-   t_rst <= '0', '1' after 50ns;
+   t_rst <= '1' after 50ns;
    
    --Clock process definitions
    Clock_process : process

@@ -40,7 +40,7 @@ end memoire_instructions;
 architecture Behavioral of memoire_instructions is
     type bancMem is array (0 to 255) of STD_LOGIC_VECTOR (31 downto 0); 
     --Initialisation du tableau
-    signal memoire : bancMem:=(x"09040300", others => (others => '0'));
+    signal memoire : bancMem:=(x"06000200", x"06010300", x"00000000", x"0e030000",x"0d040300", others => (others => '0'));
 
 begin
     process

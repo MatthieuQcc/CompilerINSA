@@ -1,6 +1,6 @@
 Vivado Simulator 2018.2
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto eae39292379848909aaa7fbbf4d2389c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot TestBancRegistre_behav xil_defaultlib.TestBancRegistre -log elaborate.log 
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto eae39292379848909aaa7fbbf4d2389c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot CheminDonnees_behav xil_defaultlib.CheminDonnees -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -10,9 +10,12 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
-Compiling package ieee.numeric_std
 Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.memoire_instructions [memoire_instructions_default]
 Compiling architecture behavioral of entity xil_defaultlib.banc_registre [banc_registre_default]
-Compiling architecture behavioral of entity xil_defaultlib.testbancregistre
-Built simulation snapshot TestBancRegistre_behav
+Compiling architecture behavioral of entity xil_defaultlib.UAL [ual_default]
+Compiling architecture behavioral of entity xil_defaultlib.memoire_donnees [memoire_donnees_default]
+Compiling architecture behavioral of entity xil_defaultlib.chemindonnees
+Built simulation snapshot CheminDonnees_behav

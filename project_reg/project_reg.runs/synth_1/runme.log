@@ -14,38 +14,32 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 40859 
+INFO: Helper process launched with PID 68455 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1255.273 ; gain = 83.828 ; free physical = 55525 ; free virtual = 68331
+Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1255.273 ; gain = 83.828 ; free physical = 56527 ; free virtual = 69518
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:182]
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:193]
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:200]
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:213]
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:224]
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:236]
-WARNING: [Synth 8-2551] possible infinite loop; process does not have a wait statement [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:247]
-INFO: [Synth 8-638] synthesizing module 'CheminDonnees' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:45]
-INFO: [Synth 8-3491] module 'memoire_instructions' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd:34' bound to instance 'mem_instru' of component 'memoire_instructions' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:139]
+INFO: [Synth 8-638] synthesizing module 'CheminDonnees' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:39]
+INFO: [Synth 8-3491] module 'memoire_instructions' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd:34' bound to instance 'mem_instru' of component 'memoire_instructions' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:149]
 INFO: [Synth 8-638] synthesizing module 'memoire_instructions' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd:40]
 INFO: [Synth 8-256] done synthesizing module 'memoire_instructions' (1#1) [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd:40]
-INFO: [Synth 8-3491] module 'banc_registre' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/banc_registre.vhd:34' bound to instance 'banc' of component 'banc_registre' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:146]
+INFO: [Synth 8-3491] module 'banc_registre' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/banc_registre.vhd:34' bound to instance 'banc' of component 'banc_registre' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:155]
 INFO: [Synth 8-638] synthesizing module 'banc_registre' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/banc_registre.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'banc_registre' (2#1) [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/banc_registre.vhd:46]
-INFO: [Synth 8-3491] module 'UAL' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd:37' bound to instance 'alu' of component 'UAL' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:159]
+INFO: [Synth 8-3491] module 'UAL' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd:37' bound to instance 'alu' of component 'UAL' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:168]
 INFO: [Synth 8-638] synthesizing module 'UAL' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd:48]
 INFO: [Synth 8-256] done synthesizing module 'UAL' (3#1) [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd:48]
-INFO: [Synth 8-3491] module 'memoire_donnees' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_donnees.vhd:34' bound to instance 'mem_donnees' of component 'memoire_donnees' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:166]
+INFO: [Synth 8-3491] module 'memoire_donnees' declared at '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_donnees.vhd:34' bound to instance 'mem_donnees' of component 'memoire_donnees' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:175]
 INFO: [Synth 8-638] synthesizing module 'memoire_donnees' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_donnees.vhd:44]
 INFO: [Synth 8-256] done synthesizing module 'memoire_donnees' (4#1) [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_donnees.vhd:44]
-WARNING: [Synth 8-3936] Found unconnected internal register 'LI_DI_C_reg' and it is trimmed from '8' to '4' bits. [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:148]
-WARNING: [Synth 8-3936] Found unconnected internal register 'MEM_RE_A_reg' and it is trimmed from '8' to '4' bits. [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:149]
-INFO: [Synth 8-256] done synthesizing module 'CheminDonnees' (5#1) [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:45]
+WARNING: [Synth 8-6014] Unused sequential element output_cpu_reg was removed.  [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:202]
+WARNING: [Synth 8-3936] Found unconnected internal register 'LI_DI_C_reg' and it is trimmed from '8' to '4' bits. [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:157]
+WARNING: [Synth 8-3936] Found unconnected internal register 'MEM_RE_A_reg' and it is trimmed from '8' to '4' bits. [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:158]
+INFO: [Synth 8-256] done synthesizing module 'CheminDonnees' (5#1) [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd:39]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1298.898 ; gain = 127.453 ; free physical = 55535 ; free virtual = 68342
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1299.898 ; gain = 128.453 ; free physical = 56533 ; free virtual = 69525
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1298.898 ; gain = 127.453 ; free physical = 55538 ; free virtual = 68345
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1299.898 ; gain = 128.453 ; free physical = 56535 ; free virtual = 69527
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -53,7 +47,7 @@ Start Loading Part and Timing Information
 Loading part: xc7a35tcpg236-1
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1306.902 ; gain = 135.457 ; free physical = 55537 ; free virtual = 68343
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1307.902 ; gain = 136.457 ; free physical = 56535 ; free virtual = 69527
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5546] ROM "memoire" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "memoire_reg[0]" won't be mapped to RAM because it is too sparse
@@ -74,7 +68,7 @@ INFO: [Synth 8-5546] ROM "memoire_reg[14]" won't be mapped to RAM because it is 
 INFO: [Synth 8-5546] ROM "memoire_reg[15]" won't be mapped to RAM because it is too sparse
 WARNING: [Synth 8-327] inferring latch for variable 'S_aux_reg' [/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/UAL.vhd:60]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1322.918 ; gain = 151.473 ; free physical = 55517 ; free virtual = 68324
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1324.926 ; gain = 153.480 ; free physical = 56520 ; free virtual = 69512
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -92,13 +86,15 @@ Detailed RTL Component Info :
 	   2 Input      8 Bit       Adders := 1     
 +---Registers : 
 	               32 Bit    Registers := 1     
-	                8 Bit    Registers := 34    
+	                8 Bit    Registers := 47    
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---Muxes : 
 	 257 Input     32 Bit        Muxes := 1     
 	   2 Input     16 Bit        Muxes := 1     
 	   2 Input      8 Bit        Muxes := 36    
-	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 52    
+	   2 Input      1 Bit        Muxes := 50    
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -111,11 +107,12 @@ Detailed RTL Component Info :
 +---Adders : 
 	   2 Input      8 Bit       Adders := 1     
 +---Registers : 
-	                8 Bit    Registers := 1     
+	                8 Bit    Registers := 14    
+	                4 Bit    Registers := 2     
+	                2 Bit    Registers := 1     
+	                1 Bit    Registers := 2     
 +---Muxes : 
 	   2 Input      8 Bit        Muxes := 4     
-	   2 Input      2 Bit        Muxes := 1     
-	   2 Input      1 Bit        Muxes := 2     
 Module memoire_instructions 
 Detailed RTL Component Info : 
 +---Registers : 
@@ -223,61 +220,61 @@ WARNING: [Synth 8-3332] Sequential element (mem_instru/output_reg[3]) is unused 
 WARNING: [Synth 8-3332] Sequential element (mem_instru/output_reg[2]) is unused and will be removed from module CheminDonnees.
 WARNING: [Synth 8-3332] Sequential element (mem_instru/output_reg[1]) is unused and will be removed from module CheminDonnees.
 WARNING: [Synth 8-3332] Sequential element (mem_instru/output_reg[0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][4]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][3]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][2]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][1]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[0][0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][4]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][3]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][2]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][1]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[1][0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][4]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][3]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][2]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][1]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[2][0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][4]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][3]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][2]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][1]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[3][0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][4]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][3]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][2]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][1]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[4][0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][4]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][3]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][2]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][1]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[5][0]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[6][7]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[6][6]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[6][5]) is unused and will be removed from module CheminDonnees.
-WARNING: [Synth 8-3332] Sequential element (mem_donnees/memoire_reg[6][4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[7]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[6]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[5]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[1]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_A_reg[0]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[7]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[6]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[5]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[1]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_A_reg[0]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[7]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[6]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[5]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[1]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_A_reg[0]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (MEM_RE_A_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (MEM_RE_A_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (MEM_RE_A_reg[1]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (MEM_RE_A_reg[0]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LC_RE_reg) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[7]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[6]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[5]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[1]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (LI_DI_OP_reg[0]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[7]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[6]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[5]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[1]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (DI_EX_OP_reg[0]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[7]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[6]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[5]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[4]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[3]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[2]) is unused and will be removed from module CheminDonnees.
+WARNING: [Synth 8-3332] Sequential element (EX_MEM_OP_reg[1]) is unused and will be removed from module CheminDonnees.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55353 ; free virtual = 68162
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56366 ; free virtual = 69375
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -290,7 +287,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55357 ; free virtual = 68165
+Finished Timing Optimization : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56366 ; free virtual = 69375
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -302,7 +299,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55356 ; free virtual = 68165
+Finished Technology Mapping : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56366 ; free virtual = 69375
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -326,7 +323,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55357 ; free virtual = 68165
+Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -339,7 +336,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55357 ; free virtual = 68165
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -351,25 +348,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55357 ; free virtual = 68165
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55357 ; free virtual = 68165
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55356 ; free virtual = 68165
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55356 ; free virtual = 68165
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -394,11 +391,11 @@ Report Instance Areas:
 |1     |top      |       |     0|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55356 ; free virtual = 68164
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 322 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1414.996 ; gain = 243.551 ; free physical = 55355 ; free virtual = 68164
-Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:15 . Memory (MB): peak = 1415.004 ; gain = 243.551 ; free physical = 55370 ; free virtual = 68179
+Synthesis finished with 0 errors, 0 critical warnings and 432 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.012 ; gain = 244.566 ; free physical = 56364 ; free virtual = 69373
+Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1416.020 ; gain = 244.566 ; free physical = 56371 ; free virtual = 69380
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -406,11 +403,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-55 Infos, 110 Warnings, 0 Critical Warnings and 0 Errors encountered.
+55 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1499.020 ; gain = 339.199 ; free physical = 55337 ; free virtual = 68146
+synth_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:15 . Memory (MB): peak = 1499.043 ; gain = 339.223 ; free physical = 56326 ; free virtual = 69335
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint '/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.runs/synth_1/CheminDonnees.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file CheminDonnees_utilization_synth.rpt -pb CheminDonnees_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.07 . Memory (MB): peak = 1523.031 ; gain = 0.000 ; free physical = 55336 ; free virtual = 68145
-INFO: [Common 17-206] Exiting Vivado at Thu Jun  2 13:28:05 2022...
+report_utilization: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1523.055 ; gain = 0.000 ; free physical = 56324 ; free virtual = 69333
+INFO: [Common 17-206] Exiting Vivado at Thu Jun  2 17:40:14 2022...

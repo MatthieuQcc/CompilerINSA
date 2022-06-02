@@ -38,3 +38,59 @@ INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/Compile
 INFO: [VRFC 10-307] analyzing entity TestBancRegistre
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/TestBancRegistre.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity TestBancRegistre
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/TestMemoireDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TestMemoireDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/TestMemoireDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TestMemoireDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/TestMemoireDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity TestMemoireDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/testCheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity testCheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/testCheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity testCheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/testCheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity testCheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity memoire_instructions
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity memoire_instructions
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity memoire_instructions
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity memoire_instructions
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/testCheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity testCheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sim_1/new/testCheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity testCheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/memoire_instructions.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity memoire_instructions
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/oberry/4IR/S2/SystemeInfo/CompilerINSA/project_reg/project_reg.srcs/sources_1/new/CheminDonnees.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity CheminDonnees
