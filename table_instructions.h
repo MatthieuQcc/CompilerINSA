@@ -17,7 +17,7 @@ typedef struct
 
 
 // Ajoute une instruction à la table des instructions
-void addInstrToTable(char* operation, int r0, int r1, int r2);
+int addInstrToTable(char* operation, int r0, int r1, int r2);
 
 //Retourne l'index de la derniere instruction dans le tableau des instructions 
 int getLastInstr();

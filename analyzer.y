@@ -13,7 +13,7 @@ extern FILE * yyin;
 %}
 %union { int nb; char* var; char * type; char* str}
 %token tMAIN tSOU tADD tMUL tDIV  tPO tPF tAO tAF tPV tVIR
-%token <nb> tNB tIF  tINT tELSE tVOID tWHILE tPRINTF tEGAL tINF tSUP
+%token <nb> tNB tIF tINT tELSE tVOID tWHILE tPRINTF tEGAL tINF tSUP
 %token <var> tID
 %type <nb> Terme Condition tType Calcul DivMul Else BlockIf BoucleWhile 
 %start Compiler
@@ -66,20 +66,21 @@ Terme :  tID {$$ = get_index_symb($1);}
 		| tNB {int temp = addressVarTemp(); addInstrToTable("COP", temp, $1, -1); $$=temp;};
 
 
+// On donne l'adresse de l'instruction JMF à tIF ($1)
+BlockIf : tIF tPO Condition {$1 = addInstrToTable("JMF", $3, -1, -1);} tPF Body {patchJump($1, getLastInstr()+1, "JMF");};
+
+
+Else : tELSE {addInstrToTable("JMP",-1,-1,-1);} Body {int endOfElse = getLastInstr();patchJump($1,endOfElse,"JMP");};
+
 BoucleWhile :  tWHILE {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body 
 		{int endOfLoop = getLastInstr();addInstrToTable("JMP",$1,-1,-1);patchJump($1,endOfLoop+1,"JMF");};
 
 
-BlockIf : tIF {$1 = getLastInstr();} tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body {int endOfIf = getLastInstr(); patchJump($1,endOfIf-1,"JMF");};
-		|  tIF {$1 = getLastInstr();}tPO Condition tPF {addInstrToTable("JMF",$4,-1,-1);} Body Else {int endOfIf = getLastInstr(); patchJump($1,endOfIf+1,"JMF");};
-
-Else : tELSE {addInstrToTable("JMP",-1,-1,-1);} Body {int endOfElse = getLastInstr();patchJump($1,endOfElse,"JMP");};
-
 // Condition assez simple, égalité, supériorité, et infériorité
-Condition : Terme tEGAL tEGAL Terme {int temp = addressVarTemp();addInstrToTable("EQU",temp,$1,$4);$$=temp;}
-	| Terme tINF Terme {int temp = addressVarTemp();addInstrToTable("INF",temp,$1,$3);$$=temp;}
-	| Terme tSUP Terme {int temp = addressVarTemp();addInstrToTable("SUP",temp,$1,$3);$$=temp;}
-	| Terme {$$=$1;};
+Condition : Calcul tEGAL tEGAL Calcul {int temp = addressVarTemp(); addInstrToTable("EQU", temp, $1, $4); $$=temp;}
+	| Calcul tINF Calcul {int temp = addressVarTemp(); addInstrToTable("INF", temp, $1, $3); $$=temp;}
+	| Calcul tSUP Calcul {int temp = addressVarTemp(); addInstrToTable("SUP", temp, $1, $3); $$=temp;}
+	| Calcul {$$=$1;};
 
 
 Print : tPRINTF tPO Calcul tPF tPV {addInstrToTable("PRI", $3, -1, -1);};

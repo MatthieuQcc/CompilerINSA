@@ -1,7 +1,9 @@
 int main()
 { 
-    int a = 10;
-    int b = 4;
-    int c = a+b*51;
-    printf(c-200);
+    int a = 50;
+    int b = 5;
+    if(a==20){
+        printf(a);
+    }
+    printf(b);
 }

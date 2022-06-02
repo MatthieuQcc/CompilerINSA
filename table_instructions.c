@@ -10,10 +10,8 @@ int varTempIndex = 999;
 // pour l'interpreteur
 int registre[2000];
 
-
-//Instructions : ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI
-
-void addInstrToTable( char* operation, int r0, int r1, int r2){
+// renvoie l'adresse à laquelle ça rajoute l'instruction
+int addInstrToTable( char* operation, int r0, int r1, int r2){
     
     my_instr instruction = {.operation=operation,.r0=r0,.r1=r1,.r2=r2};
     
@@ -44,8 +42,8 @@ void addInstrToTable( char* operation, int r0, int r1, int r2){
     } 
     
     tabInstr[tab_index] = instruction;
-    tab_index ++;
-
+    tab_index++;
+    return(tab_index-1);
 }
 
 //index de la derniere instruction
@@ -53,11 +51,15 @@ int getLastInstr() {
     return tab_index;
 }
 
-//Gere les sauts 
+
+//Gere les sauts - gère à la fois les JMF et les JMP
+// JMP : [là où on saute, -1 ,-1]
+// JMF : [CONDITION, là où on saute, -1] - si la condition est FAUSSE on saute
+
 int patchJump (int oldAdd, int newAdd, char* ope) {
-    if (strcmp(ope,"JMP")== 0) {
+    if (strcmp(ope,"JMP") == 0) {
         tabInstr[oldAdd].r0 = newAdd;
-    } else if (strcmp(ope,"JMF")==0) {
+    } else if (strcmp(ope,"JMF") == 0) {
         tabInstr[oldAdd].r1 = newAdd;
     } else {
         return -1;
@@ -65,11 +67,11 @@ int patchJump (int oldAdd, int newAdd, char* ope) {
     return 0;
 }
 
+
 int addressVarTemp(){
     varTempIndex++;
     return varTempIndex;
 }
-
 
 
 void print_instruction_table(){
@@ -113,17 +115,26 @@ void interpreter_asm(){
         }
         if(strcmp(operation, "PRI") == 0){
             printf("%d\n", registre[r0]);
-        }      
+        }   
+        if(strcmp(operation, "JMF") == 0){
+            if(registre[r0] == 0){
+                // -2 car problème indice et incrémentation
+                index_courrant = r1-2;
+            }
+        }   
+        if(strcmp(operation, "SUP") == 0){
+            registre[r0] = (registre[r1]>registre[r2]);
+        }
+        if(strcmp(operation, "INF") == 0){
+            registre[r0] = (registre[r1]<registre[r2]);
+        }
+        if(strcmp(operation, "EQU") == 0){
+            registre[r0] = (registre[r1] == registre[r2]);
+        }
+          
         index_courrant++;  
     }
 }
-
-
-
-
-
-
-
 
 
 /*
