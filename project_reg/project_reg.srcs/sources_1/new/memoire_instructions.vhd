@@ -38,14 +38,30 @@ entity memoire_instructions is
 end memoire_instructions;
 
 architecture Behavioral of memoire_instructions is
-    type bancMem is array (0 to 255) of STD_LOGIC_VECTOR (31 downto 0); 
+    type bancMem is array (0 to 255) of STD_LOGIC_VECTOR (31 downto 0);
+    
     --Initialisation du tableau
-    signal memoire : bancMem:=(x"06000200", x"06010300", x"00000000", x"0e030000",x"0d040300", others => (others => '0'));
+    --AFC R0 5
+    --AFC R1 2
+    --ADD R2 R0 R1 
+    --COP R0 R2
+    signal memoire : bancMem:=(x"06000500", x"06010200", x"01020001", x"05000200", others => (others => '0'));
 
 begin
-    process
-    begin
+
+    process 
+    --variable i : integer := 0;
     
+      begin
+            --Gestion des aléas
+        --while i<256 loop
+        --memoire(i+5) <= memoire(i);
+        --memoire(i+1) <= x"00000000";
+        --memoire(i+2) <= x"00000000";
+        --memoire(i+3) <= x"00000000";
+        --memoire(i+4) <= x"00000000";
+        --end loop;
+            
      --Attend le front montant de l'horloge pour la lecture
      --swait until CLK'event and CLK='1';
      wait until rising_edge(CLK);

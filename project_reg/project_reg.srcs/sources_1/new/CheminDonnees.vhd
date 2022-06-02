@@ -132,7 +132,7 @@ architecture Behavioral of CheminDonnees is
     signal output_cpu : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
     
     -- Clock period definition
-    constant Clock_period: time := 100 ns;
+    constant Clock_period: time := 10 ns;
     
     begin
     
@@ -186,11 +186,8 @@ architecture Behavioral of CheminDonnees is
     process
     begin
          wait until CLK_cpu'event and CLK_cpu='1';
-   -- end process;
     
     --Place les données d'instruction dans le pipeline LI/DI
-    --process
-    --begin
     --Premier etage 
     --Format d'instruction : |OP|A|B|C|
     LI_DI_A <= output_mi(23 downto 16);
@@ -199,19 +196,14 @@ architecture Behavioral of CheminDonnees is
     LI_DI_C <= output_mi(7 downto 0);
     --end process;
     
-    output_cpu <= MEM_RE_A;
+    output_cpu <= MEM_RE_B;
     IP <= IP + 1;
     
    --propage les données dans le pipeline DI/EX
-   --process
-   --begin
     DI_EX_A <= LI_DI_A;
     DI_EX_OP <= LI_DI_OP;
-    --end process;
     
     --gere l'instruction AFC
-    --process
-    --begin
     if LI_DI_OP = x"6" or LI_DI_OP = x"7" then 
     --Si instruction AFC ou LOAD
         DI_EX_B <= LI_DI_B ;
@@ -220,12 +212,9 @@ architecture Behavioral of CheminDonnees is
         DI_EX_B  <= MUX_QA; --permet de coder COP
     end if;
     DI_EX_C <= QB_banc;
-    --end process;
     
     
     --propage les données dans le pipeline EX/MEM
-    --process
-    --begin
     EX_MEM_A <= DI_EX_A;
     EX_MEM_OP <= DI_EX_OP;
     
@@ -235,8 +224,6 @@ architecture Behavioral of CheminDonnees is
         LC_EX <= "00";
     end if;
     
-   -- process
-    --begin
     --Cas des instructions ADD,MUL,SOU
     if (EX_MEM_OP < x"4") or (EX_MEM_OP > x"0") then 
         EX_MEM_B <= MUX_S;
@@ -244,11 +231,8 @@ architecture Behavioral of CheminDonnees is
     --Pour le reste des instructions 
         EX_MEM_B <= DI_EX_B;    
     end if;
-   -- end process;
     
     --propage les données dans le pipeline MEM/RE
-   -- process
-   -- begin
    
         MEM_RE_A <= EX_MEM_A;
         MEM_RE_OP <= EX_MEM_OP; 
@@ -257,11 +241,6 @@ architecture Behavioral of CheminDonnees is
         else 
             LC_MEM <= '1';
         end if;
-    --end process;
-    
-    
-    --process
-    --begin
     
     --instruction LOAD
     if MEM_RE_OP = x"7" then 
@@ -269,10 +248,8 @@ architecture Behavioral of CheminDonnees is
     else
         MEM_RE_B <= EX_MEM_B;
     end if;
-    --end process;
     
-    --process
-    --begin
+    
     --Instruction STORE
     if MEM_RE_OP = x"8" then 
         MUX_IN_MD <= EX_MEM_A;
