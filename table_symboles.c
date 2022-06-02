@@ -1,13 +1,6 @@
 #include "table_symboles.h"
-#define TAILLE_MAX 1024
+#define TAILLE_MAX 1000
 
-
-typedef struct symbol {
-    char *name;
-    char *type;
-    int address;
-    int scope; 
-} symbol;
 
 // On crée la table des symboles ayant pour taille TAILLE_MAX
 symbol symbols_tab[TAILLE_MAX];
@@ -16,7 +9,7 @@ symbol symbols_tab[TAILLE_MAX];
 int scope = 0;
 
 // On initialise une variable correspondant à l'index du tableau
-int index_tab = -1;
+int index_tab = 0;
 
 void up_scope(){
     scope++;
@@ -27,13 +20,13 @@ void down_scope(){
 }
 
 void addSymbol(char* name){
-    index_tab++;
     symbol new_symb = {
         new_symb.name = name, 
         new_symb.type = NULL, 
         new_symb.address = index_tab, 
         new_symb.scope = scope };
     symbols_tab[index_tab] = new_symb;
+    index_tab++;
 }
 
 void removeSymbols(){
@@ -49,7 +42,6 @@ void afficheSymbole(symbol symb){
     symb.name, symb.type, symb.address, symb.scope);
 }
 
-
 void printSymbols() {
     // On parcout la table des symboles
     for (int i = 0; i <= index_tab; i++){
@@ -59,21 +51,8 @@ void printSymbols() {
 }
 
 
-int get_address(char* name){
-    int index = 0;
-    while (index <= index_tab){
-        if (strcmp(name, symbols_tab[index].name) == 0){
-            return symbols_tab[index].address;
-        }
-        index++;
-    }
-    printf("La variable n'a pas été déclarée.\n");
-    return -1;
-}
-
-
 int get_index_symb(char* name){
-    int index1temp = 0;
+    int index1temp = 0;    
     bool notfound = true;
     while (index1temp<index_tab && notfound){
         if (strcmp(name, symbols_tab[index1temp].name) == 0){
@@ -84,7 +63,6 @@ int get_index_symb(char* name){
     if (notfound) {
         return -1;
     } else {
-        return index1temp;
-    }
-   
+        return index1temp-1;
+    }  
 }

@@ -1,10 +1,9 @@
 int main()
 { 
-    if(2<3){
-        int a=4+4;
+    int a = 50;
+    int b = 5;
+    if(a==20){
+        printf(a);
     }
-    else if (3==5)
-    {
-        int y=6;
-    }    
+    printf(b);
 }

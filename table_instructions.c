@@ -5,13 +5,15 @@
 my_instr tabInstr [MAX_INSTR];
 int tab_index = 0;
 int last_index = 0;
-int tempIndex = 1000;
+int varTempIndex = 999;
 
-//Instructions : ADD, MUL, SOU, DIV, COP, AFC, JMP, JMF, INF, SUP, EQU, PRI
+// pour l'interpreteur
+int registre[2000];
 
-void addInstrToTable( char* operation, int r0, int r1, int r2){
+// renvoie l'adresse à laquelle ça rajoute l'instruction
+int addInstrToTable( char* operation, int r0, int r1, int r2){
     
-    my_instr instruction = {.operation="operation",.r0=r0,.r1=r1,.r2=r2};
+    my_instr instruction = {.operation=operation,.r0=r0,.r1=r1,.r2=r2};
     
     if (strcmp(operation, "ADD")==0) {
         instruction.code_ope = 1;
@@ -40,26 +42,24 @@ void addInstrToTable( char* operation, int r0, int r1, int r2){
     } 
     
     tabInstr[tab_index] = instruction;
-    tab_index ++;
-
+    tab_index++;
+    return(tab_index-1);
 }
-
-/*void tempAddInstrToTable (char* instr) {
-    int vartemp1 = addVarTemp();
-    int vartemp2 = addVarTemp();
-    addInstrToTable(instr,vartemp1,vartemp1,vartemp2);
-}*/
 
 //index de la derniere instruction
 int getLastInstr() {
     return tab_index;
 }
 
-//Gere les sauts 
+
+//Gere les sauts - gère à la fois les JMF et les JMP
+// JMP : [là où on saute, -1 ,-1]
+// JMF : [CONDITION, là où on saute, -1] - si la condition est FAUSSE on saute
+
 int patchJump (int oldAdd, int newAdd, char* ope) {
-    if (strcmp(ope,"JMP")== 0) {
+    if (strcmp(ope,"JMP") == 0) {
         tabInstr[oldAdd].r0 = newAdd;
-    } else if (strcmp(ope,"JMF")==0) {
+    } else if (strcmp(ope,"JMF") == 0) {
         tabInstr[oldAdd].r1 = newAdd;
     } else {
         return -1;
@@ -67,26 +67,82 @@ int patchJump (int oldAdd, int newAdd, char* ope) {
     return 0;
 }
 
-int addVarTemp() {
-    int indexActu = tempIndex;
-    tempIndex ++;
-    return indexActu;
+
+int addressVarTemp(){
+    varTempIndex++;
+    return varTempIndex;
 }
 
+
+void print_instruction_table(){
+    FILE* fichier;
+    fichier = fopen("./Print_Instruction_Table", "w+");
+    for (int i = 0; i < tab_index; i++){
+        fprintf(fichier, "%s %d %d %d", tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
+        fprintf(fichier, "\n");
+    }
+}
+
+
+
+void interpreter_asm(){
+    int r0, r1, r2;
+    int index_courrant = 0;
+
+    while(index_courrant < tab_index){
+        my_instr instruction_courrante = tabInstr[index_courrant];
+        char * operation = instruction_courrante.operation;
+        r0 = instruction_courrante.r0;
+        r1 = instruction_courrante.r1;
+        r2 = instruction_courrante.r2;
+        if(strcmp(operation, "COP") == 0){
+            registre[r0] = r1;
+        }
+        if(strcmp(operation, "AFC") == 0){
+            registre[r0] = registre[r1];
+        }
+        if(strcmp(operation, "ADD") == 0){
+            registre[r0] = registre[r1]+registre[r2];
+        }
+        if(strcmp(operation, "SOU") == 0){
+            registre[r0] = registre[r1]-registre[r2];
+        }
+        if(strcmp(operation, "MUL") == 0){
+            registre[r0] = registre[r1]*registre[r2];
+        }
+        if(strcmp(operation, "DIV") == 0){
+            registre[r0] = registre[r1]/registre[r2];
+        }
+        if(strcmp(operation, "PRI") == 0){
+            printf("%d\n", registre[r0]);
+        }   
+        if(strcmp(operation, "JMF") == 0){
+            if(registre[r0] == 0){
+                // -2 car problème indice et incrémentation
+                index_courrant = r1-2;
+            }
+        }   
+        if(strcmp(operation, "SUP") == 0){
+            registre[r0] = (registre[r1]>registre[r2]);
+        }
+        if(strcmp(operation, "INF") == 0){
+            registre[r0] = (registre[r1]<registre[r2]);
+        }
+        if(strcmp(operation, "EQU") == 0){
+            registre[r0] = (registre[r1] == registre[r2]);
+        }
+          
+        index_courrant++;  
+    }
+}
+
+
+/*
 void removeVarTemp () {
-    if (tempIndex > 1000 ) {
-        tempIndex--;
+    if (varTempIndex > 1000 ) {
+        varTempIndex--;
     } else {
         printf("Données temporaires empietent sur les autres données\n");
     }
 }
-
-
-void printTable (FILE* instructionTable) {
-
-    for (int i = 0; i < last_index; i++) {
-        fprintf(instructionTable, "|%s|%d|%d|%d|\n",tabInstr[i].operation, tabInstr[i].r0, tabInstr[i].r1, tabInstr[i].r2);
-    }
-}
-
-
+*/
