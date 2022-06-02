@@ -45,10 +45,10 @@ COMPONENT memoire_instructions
 end Component;
 
 --Clock period definition   
- constant Clock_period : time := 100ns;
+ constant Clock_period : time := 5ns;
  
  signal add : STD_LOGIC_VECTOR(7 downto 0) := (others => '0');
- signal t_CLK : STD_LOGIC := '1';
+ signal t_CLK : STD_LOGIC := '0';
  signal output : STD_LOGIC_VECTOR(31 downto 0) := (others => '0');
  
  
@@ -67,12 +67,9 @@ mem_instru : memoire_instructions Port Map (
       wait for Clock_period/2;
   end process; 
  
- process
- begin
     
-    add <= x"01" after 5ns, x"02" after 10ns;
+    add <= x"01" after 15ns, x"02" after 30ns;
  
- end process;
 
 
 end Behavioral;
