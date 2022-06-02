@@ -1,9 +1,12 @@
 int main()
 { 
-    int a = 50;
-    int b = 5;
-    if(a==20){
+    int a = 1;
+    while(a<10){
         printf(a);
-    }
-    printf(b);
+        a = a+1;
+    }   
+    printf(1);
+    printf(2);
+    printf(3);
+    printf(4);
 }

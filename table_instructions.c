@@ -121,7 +121,10 @@ void interpreter_asm(){
                 // -2 car problème indice et incrémentation
                 index_courrant = r1-2;
             }
-        }   
+        }  
+        if(strcmp(operation, "JMP") == 0){
+            index_courrant = r0-2;
+        }  
         if(strcmp(operation, "SUP") == 0){
             registre[r0] = (registre[r1]>registre[r2]);
         }
